@@ -1,0 +1,51 @@
+<div class="bg" >
+    <app-header></app-header>
+    <form class="formulaire">
+        <div class="form-row" id="text" >
+          <h3>Formulaire De Véhicules</h3>
+          <br><br>
+            <div class="form-group col-md-6">
+                <label for="inputMatricule">Matricule </label>
+                <input type="text" class="form-control" name="matricule" [(ngModel)]="vehicule.matricule" id="inputMatricule">
+              </div><br>
+            <div class="form-row align-items-center">
+                <div class="col-auto my-1">
+                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type de Véhicule</label>&nbsp;&nbsp;
+                  <select name="type" [(ngModel)]="vehicule.types" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Camion</option>
+                    <option value="Tracteur Routier">Tracteur Routier</option>
+                    <option value="Véhicule légère">Véhicule légère</option>
+                    <option value="Engin de manutention">Engin de manutention</option>
+                    <option value="Tracteur de cour">Tracteur de cour</option>
+                  </select>
+                </div>
+          </div>
+          <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputPoid">Poid</label>
+            <input name="poid" [(ngModel)]="vehicule.poid" type="number" class="form-control" id="inputPoid">
+          </div> <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputChauffeur">Nom du Chauffeur</label>
+            <input name="chauffeur" [(ngModel)]="vehicule.chauffeur" type="text" class="form-control" id="inputChauffeur">
+          </div>
+          <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputVitesse">Vitesse</label>
+            <input name="vitesse" [(ngModel)]="vehicule.vitesse" type="number" class="form-control" id="inputVitesse">
+          </div><br>
+        </div>
+        <div class="form-group" id="text">
+          <label for="inputFreinage">Freinage</label>
+          <input name="freinage" [(ngModel)]="vehicule.freinage" type="text" class="form-control" id="inputFreinage">
+        </div><br>
+        <div class="form-group" id="text">
+          <label for="inputConsommation carbonat">Consommation carbonat</label>
+          <input name="consommation"  [(ngModel)]="vehicule.consommation" type="text" class="form-control" id="inputConsommation carbonat" >
+        </div> <br><br>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-success" id="btn" (click)="registervehicule()" routerLink="/vehicules">Ajouter Vehicule</button>
+        </div>
+        
+    </form>
+</div>

@@ -1,0 +1,38 @@
+.formulaire{
+    width: 600px;
+    background-color: white;
+    margin: 0 auto;
+    opacity: 0.65;
+    color: black;
+    margin-top: 60px;
+    padding: 20px;
+    padding-bottom: 30px;
+ 
+    
+}
+#text{
+    font-size: 18px;
+    font-family:cursive;
+}
+
+.bg{
+    background-size: cover;
+    height: 1000px;
+    background: url(/assets/images/coton3.jpg);
+
+}
+#btn{
+    width:200px;
+    height: 50px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    font-family:cursive;
+}
+h3{
+    text-align: center;
+    color: #009900;
+    font-weight: bold;
+    font-size: 22px;
+    font-family:cursive;
+}
