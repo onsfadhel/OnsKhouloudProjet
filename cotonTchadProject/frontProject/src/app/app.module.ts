@@ -21,6 +21,8 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { FormsModule } from '@angular/forms';
     VehiculecontentComponent,
     ChauffeurComponent,
     HeaderComponent,
-    FormulairevehiculeComponent
+    FormulairevehiculeComponent,
+    FormulairemodificationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

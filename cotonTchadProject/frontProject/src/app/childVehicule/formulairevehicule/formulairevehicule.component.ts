@@ -11,16 +11,7 @@ import { error } from '@angular/compiler/src/util';
   //providers:[VehiculeService],
 })
 export class FormulairevehiculeComponent implements OnInit {
- /* matricule:any;
-  types:any;
-  poid:any;
-  chauffeur:any;
-  vitesse:any;
-  freinage:any;*/
-  consommation:any;
   register:any;
-  //vehicules = [{matricule: 'test',types: 'camion',poid: '200kg',chauffeur:'mohamed',vitesse: '80',freinage:'5',consommation: 'rrrrrrrrr'}];
-  //vehicule: { (): void; matricule?: any; types?: any; poid?: any; chauffeur?: any; vitesse?: any; freinage?: any; consommation?: any; })
   vehicule={ matricule: ' ',types:' ',poid: ' ',chauffeur :' ',vitesse :' ',freinage :' ',consommation: ' '};
   constructor(private http: HttpClient, private router:Router) {}
   

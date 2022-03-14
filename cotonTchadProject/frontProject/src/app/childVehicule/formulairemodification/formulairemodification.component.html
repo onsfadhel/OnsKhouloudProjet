@@ -1,0 +1,50 @@
+<div class="bg" >
+  <mat-toolbar class="toolbarClass">
+    <button mat-button disabled>
+      <img class="logo-icon"  src="assets/images/CTDn.png" >       
+    </button>   
+  </mat-toolbar>
+    <form class="formulaire"  >
+        <div class="form-row" id="text" >
+          <h3>Modifier Le contenu du table véhicule</h3>
+          <br><br>
+            <div class="form-group col-md-6">
+                <label for="inputMatricule">Matricule </label>
+                <input type="text" class="form-control" name="matricule" [(ngModel)]="vehicule.id" id="inputMatricule" value={{selectedVehicule.matricule}}>
+              </div><br>
+              <div class="form-group col-md-6" id="text">
+                <label for="inputPoid">Catégorie</label>
+                <input name="categorie" [(ngModel)]="vehicule.types" type="text" class="form-control" required value={{selectedVehicule.types}} id="inputtype">
+              </div>
+          <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputPoid">Poid</label>
+            <input name="poid" [(ngModel)]="vehicule.poid" type="number" class="form-control" value={{selectedVehicule.poid}} id="inputPoid">
+          </div> <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputChauffeur">Nom du Chauffeur</label>
+            <input name="chauffeur" [(ngModel)]="vehicule.chauffeur" type="text" class="form-control" id="inputChauffeur" value={{selectedVehicule.chauffeur}}>
+          </div>
+          <br>
+          <div class="form-group col-md-6" id="text">
+            <label for="inputVitesse">Vitesse</label>
+            <input name="vitesse" [(ngModel)]="vehicule.vitesse" type="number" class="form-control" id="inputVitesse" placeholder={{selectedVehicule.vitesse}}>
+          </div><br>
+        </div>
+        <div class="form-group" id="text">
+          <label for="inputFreinage">Freinage</label>
+          <input name="freinage" [(ngModel)]="vehicule.freinage" type="text" class="form-control" id="inputFreinage" value={{selectedVehicule.freinage}}>
+        </div><br>
+        <div class="form-group" id="text">
+          <label for="inputConsommation carbonat">Consommation carbonat</label>
+          <input name="consommation"  [(ngModel)]="vehicule.consommation" type="text" class="form-control" id="inputConsommation carbonat" value={{selectedVehicule.consommation}}>
+        </div> <br><br>
+        <div class="d-flex justify-content-center">
+            <button type="button"  id="btn" (click)="modifiertablevehicule(selectedVehicule)" ><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+              <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+            </svg>&nbsp;Modifier Vehicule</button>
+        </div>
+        
+    </form>
+</div>

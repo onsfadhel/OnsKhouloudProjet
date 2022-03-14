@@ -1,6 +1,8 @@
 import { ApiService } from 'src/app/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-vehiculecontent',
   templateUrl: './vehiculecontent.component.html',
@@ -9,8 +11,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class VehiculecontentComponent implements OnInit {
   vehicules = [{id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: 'rrrrrrrrr'}];
-  
-   constructor(private http: HttpClient,private api: ApiService) {
+  @Input() id:any;
+  @Input() matricule: any;
+   constructor(private http: HttpClient,private api: ApiService,private router: Router) {
     this.getVehicules();
    }
   
@@ -37,6 +40,9 @@ export class VehiculecontentComponent implements OnInit {
         console.log(error)
       });
     
+  }
+  onSelect(vehicule:any){
+    this.router.navigate(['/FormulaireModificationVehicule',vehicule.id]);
   }
 
   ngOnInit(): void {

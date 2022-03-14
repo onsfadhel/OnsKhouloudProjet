@@ -14,5 +14,8 @@ export class ApiService {
     return this.http.get(this.baseurl + 'vehicules/',
     {headers: this.httpHeaders});
   }
-
+  getVehiculeById(id:any): Observable<any> {
+    return this.http.get(this.baseurl + 'vehicules/' + id + '/',
+    {headers: this.httpHeaders});
+  }
 }

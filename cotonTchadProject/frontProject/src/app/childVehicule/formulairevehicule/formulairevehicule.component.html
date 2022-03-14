@@ -1,5 +1,9 @@
 <div class="bg" >
-    <app-header></app-header>
+  <mat-toolbar class="toolbarClass">
+    <button mat-button disabled>
+      <img class="logo-icon"  src="assets/images/CTDn.png" >       
+    </button>   
+  </mat-toolbar>
     <form class="formulaire">
         <div class="form-row" id="text" >
           <h3>Formulaire De Véhicules</h3>
@@ -44,7 +48,7 @@
           <input name="consommation"  [(ngModel)]="vehicule.consommation" type="text" class="form-control" id="inputConsommation carbonat" >
         </div> <br><br>
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-success" id="btn" (click)="registervehicule()" routerLink="/vehicules">Ajouter Vehicule</button>
+            <button type="button" class="btn " id="btn" (click)="registervehicule()" >Ajouter Vehicule</button>
         </div>
         
     </form>
