@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./formulairemodification.component.css']
 })
 export class FormulairemodificationComponent implements OnInit {
-  vehicule={ id:'',matricule: ' ',types:' ',poid: ' ',chauffeur :' ',vitesse :' ',freinage :' ',consommation: ' '};
+  vehicule={ id:'',matricule: '',types:'',poid: '',chauffeur :'',vitesse :'',freinage :' ',consommation: ''};
+  vehicules=[{ id:'',matricule: '',types:'',poid: '',chauffeur :'',vitesse :'',freinage :' ',consommation: ''}];
   public VehiculeId :any ;
- 
+  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   selectedVehicule;
   constructor(private http: HttpClient, private router:Router,private activatedroute: ActivatedRoute,private api:ApiService) { 
     this.selectedVehicule={id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: ''};
+  
   }
 
   ngOnInit(): void {
@@ -32,18 +34,26 @@ export class FormulairemodificationComponent implements OnInit {
         
       )
   }
-  modifiertablevehicule(vehicule :any){
-    let baseurl = "http://127.0.0.1:8000/";
-    let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    const body= { id: vehicule.id ,matricule: vehicule.matricule ,types: vehicule.types ,poid: vehicule.poid ,chauffeur : vehicule.chauffeur,vitesse :vehicule.vitesse ,
-      freinage :vehicule.freinage ,consommation: vehicule.consommation};
-    this.http.put(baseurl + 'vehicules/'+vehicule.id+'/', body).subscribe(
-      data=>{
-        alert("Votre table est modifié ");
-        this.router.navigate(['/vehicule']);
+  getVehicules = () => {
+    this.api.getAllVehicules().subscribe(
+      data => {
+        this.vehicules = data;
+      },
+      error => {
+        console.log(error);
       }
-    )
-    
-    
+    );
+  }
+  updateVehicule = () => {
+    this.api.updateVehicule(this.selectedVehicule).subscribe(
+      data=> {
+        this.getVehicules();
+        alert("votre table est modifié ");
+        this.router.navigate(['/vehicule']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
