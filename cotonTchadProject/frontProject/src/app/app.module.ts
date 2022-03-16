@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VehiculecontentComponent } from './vehiculecontent/vehiculecontent.component';
 import { ChauffeurComponent } from './chauffeur/chauffeur.component';
-import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormulairevehiculeComponent } from './childVehicule/formulairevehicule/formulairevehicule.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,7 +36,6 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     VehiculecontentComponent,
     ChauffeurComponent,
-    HeaderComponent,
     FormulairevehiculeComponent,
     FormulairemodificationComponent,
     LoginComponent,

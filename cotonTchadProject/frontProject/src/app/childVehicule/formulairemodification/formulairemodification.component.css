@@ -1,44 +1,14 @@
-.logo-icon{
-    height: 350px;
-    width: 400px;
-    margin-bottom: 20px;
-}
-.toolbarClass{
-    background-color: #39ac6b;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    opacity: 0.9;
-}
-.formulaire{
-    background-color: #DBEEF2;
-    width: 630px;
-    height: 750px;
-    opacity:0.85;
-    margin-left: 30px;
-    margin-bottom: 50px;
-    color: black;
-    margin-top: 40px;
-    padding: 20px;
-    padding-bottom: 10px;
-    font-size: 20px;
-    
-}
-h3{
-    text-align: center;
-    color: #187486;
+mat-form-field{
+    width :80%;
+    margin-left:20px;
+    margin-right:60px;
+  }
+  #btn{
+    height: 55px;
+    color: white;
+    font-size: 18px;
     font-weight: bold;
-    font-size: 23px;
     font-family:cursive;
-}
-#btn{
-    background-color:#187486;
-    border-radius: 2%;
-    height: 50px;
-    color:white;
-}
-  .bg{
-    background-size: cover;
-    height: 880px;
-    background: url(/assets/images/transp.jpg);
-
+    background-color: #187486;
+    
 }

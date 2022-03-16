@@ -1,9 +1,7 @@
 import { ApiService } from 'src/app/api.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormulairevehiculeComponent } from '../childVehicule/formulairevehicule/formulairevehicule.component';
 @Component({
