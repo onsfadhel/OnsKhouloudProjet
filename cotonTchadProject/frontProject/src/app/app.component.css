@@ -1,0 +1,26 @@
+mat-sidenav-container{
+    height: 765px;
+    }
+    mat-sidenav{
+        width: 280px;
+        background-color: #3A393C;
+    }
+    .icon-menu{
+        color: #3A393C;
+    }
+    .bar-menu{
+    background-color: #06a86d;
+    }
+    
+.toolbar{
+    color:white;
+    font-size:22px;
+    font-family:cursive;
+}    
+.matlist{
+    color:black;
+    font-size:18px;
+    font-family:cursive;
+    font-weight: bold;
+    
+}

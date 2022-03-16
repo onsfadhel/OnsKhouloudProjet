@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from BackEnd.Serializers import vehiculeSerializer,UserSerializer, GroupSerializer
-from .models import vehicules
+from BackEnd.Serializers import vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer
+from .models import vehicules , utilisateurs
 
 class vehiculeViewSet(viewsets.ModelViewSet):
     """
@@ -28,3 +28,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class UtilisateursViewSet(viewsets.ModelViewSet):
+    queryset= utilisateurs.objects.all()
+    serializer_class = UtlisateursSerializer

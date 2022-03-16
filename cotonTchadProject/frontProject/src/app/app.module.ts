@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ResponsablelogistiqueComponent } from './responsablelogistique/responsablelogistique.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { VehiculeComponent } from './vehicule/vehicule.component';
 import { VehiculecontentComponent } from './vehiculecontent/vehiculecontent.component';
 import { ChauffeurComponent } from './chauffeur/chauffeur.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatDividerModule} from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule}from'@angular/material/core';
+import { MatSelectModule} from '@angular/material/select';
 import { MatButtonModule} from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule} from '@angular/material/toolbar';
@@ -28,29 +35,37 @@ import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ResponsablelogistiqueComponent,
-    VehiculeComponent,
     VehiculecontentComponent,
     ChauffeurComponent,
     HeaderComponent,
     FormulairevehiculeComponent,
     FormulairemodificationComponent,
-    LoginComponent
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
+    MatDatepickerModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSelectModule,
     BrowserAnimationsModule,
+    MatListModule,
     FlexLayoutModule,
     MatFormFieldModule,
+    MatNativeDateModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatSidenavModule,
     MatToolbarModule,
+    MatDividerModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatGridListModule ,
     MatIconModule,
     AngularSplitModule,
     FormsModule 

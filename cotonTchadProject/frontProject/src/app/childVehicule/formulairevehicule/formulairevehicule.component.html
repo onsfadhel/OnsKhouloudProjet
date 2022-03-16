@@ -1,55 +1,46 @@
-<div class="bg" >
-  <mat-toolbar class="toolbarClass">
-    <button mat-button disabled>
-      <img class="logo-icon"  src="assets/images/CTDn.png" >       
-    </button>   
-  </mat-toolbar>
-    <form class="formulaire">
-        <div class="form-row" id="text" >
-          <h3>Formulaire De Véhicules</h3>
-          <br><br>
-            <div class="form-group col-md-6">
-                <label for="inputMatricule">Matricule </label>
-                <input type="text" class="form-control" name="matricule" [(ngModel)]="vehicule.matricule" id="inputMatricule">
-              </div><br>
-            <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Type de Véhicule</label>&nbsp;&nbsp;
-                  <select name="type" [(ngModel)]="vehicule.types" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Camion</option>
-                    <option value="Tracteur Routier">Tracteur Routier</option>
-                    <option value="Véhicule légère">Véhicule légère</option>
-                    <option value="Engin de manutention">Engin de manutention</option>
-                    <option value="Tracteur de cour">Tracteur de cour</option>
-                  </select>
-                </div>
-          </div>
-          <br>
-          <div class="form-group col-md-6" id="text">
-            <label for="inputPoid">Poid</label>
-            <input name="poid" [(ngModel)]="vehicule.poid" type="number" class="form-control" id="inputPoid">
-          </div> <br>
-          <div class="form-group col-md-6" id="text">
-            <label for="inputChauffeur">Nom du Chauffeur</label>
-            <input name="chauffeur" [(ngModel)]="vehicule.chauffeur" type="text" class="form-control" id="inputChauffeur">
-          </div>
-          <br>
-          <div class="form-group col-md-6" id="text">
-            <label for="inputVitesse">Vitesse</label>
-            <input name="vitesse" [(ngModel)]="vehicule.vitesse" type="number" class="form-control" id="inputVitesse">
-          </div><br>
-        </div>
-        <div class="form-group" id="text">
-          <label for="inputFreinage">Freinage</label>
-          <input name="freinage" [(ngModel)]="vehicule.freinage" type="text" class="form-control" id="inputFreinage">
-        </div><br>
-        <div class="form-group" id="text">
-          <label for="inputConsommation carbonat">Consommation carbonat</label>
-          <input name="consommation"  [(ngModel)]="vehicule.consommation" type="text" class="form-control" id="inputConsommation carbonat" >
-        </div> <br><br>
-        <div class="d-flex justify-content-center">
-            <button type="button" class="btn " id="btn" (click)="registervehicule()" >Ajouter Vehicule</button>
-        </div>
-        
-    </form>
+<h1 mat-dialog-title style="text-align:center;">Formulaire pour véhicule</h1><br>
+<div mat-card-content>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Matricule</mat-label>
+    <input matInput type="text"  name="matricule" [(ngModel)]="vehicule.matricule">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Catégorie</mat-label>
+    <mat-select name="type" [(ngModel)]="vehicule.types"  id="inlineFormCustomSelect">
+      <mat-option>Camion</mat-option>
+      <mat-option value="Tracteur Routier">Tracteur Routier</mat-option>
+      <mat-option value="Véhicule légère">Véhicule légère</mat-option>
+      <mat-option value="Engin de manutention">Engin de manutention</mat-option>
+      <mat-option value="Tracteur de cour">Tracteur de cour</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Poid </mat-label>
+    <input matInput name="poid" [(ngModel)]="vehicule.poid" type="number" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Chauffeur </mat-label>
+    <input matInput name="chauffeur" [(ngModel)]="vehicule.chauffeur" type="text" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Vitesse </mat-label>
+    <input matInput name="chauffeur" [(ngModel)]="vehicule.vitesse" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Freinage </mat-label>
+    <input matInput name="chauffeur" [(ngModel)]="vehicule.freinage" type="text" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Consommation Carbonat</mat-label>
+    <input matInput name="chauffeur" [(ngModel)]="vehicule.consommation" type="text" class="form-control">
+  </mat-form-field>
+  
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button (click)="registervehicule()" id="btn" >Ajouter Véhicule</button>
 </div>
