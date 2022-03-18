@@ -1,7 +1,7 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-formulairemodification',

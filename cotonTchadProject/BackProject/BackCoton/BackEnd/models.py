@@ -20,8 +20,11 @@ class utilisateurs(models.Model):
     role=models.CharField( max_length=50)
 
 class chauffeurs(models.Model):
+    photo=models.ImageField( upload_to='pictures', height_field=None, width_field=None, max_length=100,blank=True, null=True )
     nom=models.CharField(max_length=50)
     prenom= models.CharField(max_length=50)
     Birthday= models.DateField(auto_now=False, auto_now_add=False)
-    téléphone= PhoneNumberField()
+    phone= PhoneNumberField()
     adresse=models.CharField(max_length=50)
+    permis=models.CharField( max_length=50,blank=True, null=True )
+    salaire=models.FloatField(blank=True, null=True )

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import{VehiculeService} from 'src/app/vehicule.service';
+import{VehiculeService} from 'src/app/services/vehicule.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 

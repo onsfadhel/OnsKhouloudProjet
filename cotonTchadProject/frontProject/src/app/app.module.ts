@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-
+import { NgSrcModule } from 'ng-src';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +49,7 @@ import { HeaderComponent } from './header/header.component';
     NgbModule,
     AppRoutingModule,
     MatDatepickerModule,
+    NgSrcModule,
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
