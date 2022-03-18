@@ -18,3 +18,10 @@ class utilisateurs(models.Model):
     téléphone= PhoneNumberField()
     adresse=models.CharField( max_length=50)
     role=models.CharField( max_length=50)
+
+class chauffeurs(models.Model):
+    nom=models.CharField(max_length=50)
+    prenom= models.CharField(max_length=50)
+    Birthday= models.DateField(auto_now=False, auto_now_add=False)
+    téléphone= PhoneNumberField()
+    adresse=models.CharField(max_length=50)

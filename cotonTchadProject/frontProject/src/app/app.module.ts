@@ -30,6 +30,7 @@ import { AngularSplitModule } from 'angular-split';
 import { FormsModule } from '@angular/forms';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     FormulairevehiculeComponent,
     FormulairemodificationComponent,
     LoginComponent,
+    HeaderComponent,
     
   ],
   imports: [

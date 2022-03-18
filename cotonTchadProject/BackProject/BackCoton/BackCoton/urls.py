@@ -22,6 +22,7 @@ router = routers.DefaultRouter()
 #router.register(r'users', views.UserViewSet)
 router.register(r'vehicules', views.vehiculeViewSet)
 router.register(r'utilisateurs', views.UtilisateursViewSet)
+router.register(r'chauffeurs',views.ChauffeursViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [

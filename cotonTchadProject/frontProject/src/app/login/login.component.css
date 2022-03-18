@@ -62,8 +62,13 @@
  font-weight: bold;
  
 }
+.msgerreur{
+    margin-top: 2px;
+    text-align:center;
+    color: red;
+}
 .saisie{
-    text-transform: uppercase;   
+text-transform: uppercase;   
  margin: 15px;
  font-size: 1.2rem;
  color: #333;

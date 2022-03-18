@@ -14,9 +14,18 @@ export class FormulairemodificationComponent implements OnInit {
   public VehiculeId :any ;
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   selectedVehicule;
+  responsablelogistiquePath : String;
+  opened=false;
   constructor(private http: HttpClient, private router:Router,private activatedroute: ActivatedRoute,private api:ApiService) { 
     this.selectedVehicule={id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: ''};
+    this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
   
+  }
+  logout() { 
+    let isloggedIn: Boolean = false;
+    localStorage.removeItem('loggedUser');
+    localStorage.setItem('isloggedIn',String(isloggedIn));
+    this.router.navigate(['/login']);
   }
 
   ngOnInit(): void {

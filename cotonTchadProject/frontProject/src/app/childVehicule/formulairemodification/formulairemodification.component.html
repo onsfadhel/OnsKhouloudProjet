@@ -1,44 +1,115 @@
-<br><br>
-<h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier la table des véhicules</h1><br>
-<div mat-card-content>
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Matricule</mat-label>
-    <input matInput type="text"  name="matricule" [(ngModel)]="selectedVehicule.matricule">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Catégorie</mat-label>
-    <input matInput name="categorie" [(ngModel)]="selectedVehicule.types" type="text" >
-  </mat-form-field>
+<mat-toolbar class="bar-menu">
+  <mat-toolbar-row class="toolbar">
+ 
+          <button mat-button  (click)="opened =! opened "><mat-icon class="icon-menu">menu</mat-icon></button>         
+          <a class="nav-link" routerLink="/vehicule" id="textmodify"style="padding-left:50px;color:white;"><mat-icon>home</mat-icon>&nbsp;Home</a>
+          <a class="nav-link" href="#" id="textmodify" style="padding-left:30px;color:white;">Dashboard</a>
+          <a class="nav-link" href="#" id="textmodify" style="padding-left:30px;color:white;">Bordereaux</a>
+          <div style="padding-left:900px;">
+                  <div ngbDropdown class="nav-item dropdown ">
+                      <a ngbDropdownToggle id="textmodify" class="nav-link dropdown-toggle"  id="navbarDropdown" style="color:white;font-size:20px;font-family:cursive;" role="button" data-toggle="dropdown" aria-expanded="false">
+                      <img [src]="responsablelogistiquePath" style="width:35px;height:35px;"/>
+                          Utilisateur
+                      </a>
+                      <div ngbDropdownMenu class="dropdown-menu " aria-labelledby="navbarDropdown" >
+                          <a ngbDropdownItem class="dropdown-item" href="#" style="font-size:18px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                      </svg>&nbsp;&nbsp;Mon Profile </a>
+                      <a ngbDropdownItem class="dropdown-item" href="#" style="font-size:18px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                          <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                      </svg>&nbsp;&nbsp;Paramétre</a>
+                      <div class="dropdown-divider"></div>
+                      <a ngbDropdownItem class="dropdown-item" href="#" style="font-size:18px;" (click)="logout()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                          <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                      </svg> &nbsp;&nbsp;Déconnecter</a>
+                      </div>
+                  </div>
+              </div>
+      
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+      <br><br>
+   <mat-list >
+     <mat-list-item class="matlist">
+      <a routerLink="/vehicule"  style="text-decoration:none;" >
+          <div style="color:white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                  <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>&nbsp;&nbsp;
+              Gérer les véhicules</div>
+          </a>
+     </mat-list-item>
+     <div class="dropdown-divider"></div>
+     <mat-list-item class="matlist">
+      <a routerLink="/chauffeur" style="text-decoration:none;" >
+          <div style="color:white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
+                  <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
+              </svg>&nbsp;&nbsp;
+              Gérer les chauffeurs </div></a>
+     </mat-list-item>
+     <div class="dropdown-divider"></div>
+     <mat-list-item class="matlist">
+      <a routerLink="#" style="text-decoration:none;">
+          <div style="color:white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+              </svg>&nbsp;&nbsp;
+          Gérer les transactions </div></a>
+     </mat-list-item>
+   </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content> 
   
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Poid </mat-label>
-    <input matInput name="chauffeur" [(ngModel)]="selectedVehicule.poid" type="text"  >
-  </mat-form-field>
+  <br><br>
+    <h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier la table des véhicules</h1><br>
+    <div mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Matricule</mat-label>
+        <input matInput type="text"  name="matricule" [(ngModel)]="selectedVehicule.matricule">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Catégorie</mat-label>
+        <input matInput name="categorie" [(ngModel)]="selectedVehicule.types" type="text" >
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Poid </mat-label>
+        <input matInput name="chauffeur" [(ngModel)]="selectedVehicule.poid" type="text"  >
+      </mat-form-field>
 
 
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Chauffeur </mat-label>
-    <input matInput name="chauffeur" [(ngModel)]="selectedVehicule.chauffeur" type="text" >
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Vitesse </mat-label>
-    <input matInput name="vitesse" [(ngModel)]="selectedVehicule.vitesse" type="text">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Freinage </mat-label>
-    <input matInput name="freinage" [(ngModel)]="selectedVehicule.freinage" type="text">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:18px;">Consommation Carbonat</mat-label>
-    <input matInput name="consommation"  [(ngModel)]="selectedVehicule.consommation" type="text">
-  </mat-form-field>
-  
-</div>
-<div mat-dialog-action style="text-align:center;" >
-<button  mat-raised-button  id="btn" (click)="updateVehicule()" >
-  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-  </svg>
-  Modifier Véhicule</button>
-</div>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Chauffeur </mat-label>
+        <input matInput name="chauffeur" [(ngModel)]="selectedVehicule.chauffeur" type="text" >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Vitesse </mat-label>
+        <input matInput name="vitesse" [(ngModel)]="selectedVehicule.vitesse" type="text">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Freinage </mat-label>
+        <input matInput name="freinage" [(ngModel)]="selectedVehicule.freinage" type="text">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Consommation Carbonat</mat-label>
+        <input matInput name="consommation"  [(ngModel)]="selectedVehicule.consommation" type="text">
+      </mat-form-field>
+      
+    </div>
+    <div mat-dialog-action style="text-align:center;" >
+    <button  mat-raised-button  id="btn" (click)="updateVehicule()" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+      Modifier Véhicule</button>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

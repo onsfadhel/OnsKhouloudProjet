@@ -14,9 +14,18 @@ export class VehiculecontentComponent implements OnInit {
   vehicules = [{id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: 'rrrrrrrrr'}];
   @Input() id:any;
   @Input() matricule: any;
+  responsablelogistiquePath : String;
+  opened=false;
    constructor(private http: HttpClient,private api: ApiService,private router: Router,private dialog: MatDialog) {
     this.getVehicules();
+    this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
    }
+   logout() { 
+    let isloggedIn: Boolean = false;
+    localStorage.removeItem('loggedUser');
+    localStorage.setItem('isloggedIn',String(isloggedIn));
+    this.router.navigate(['/login']);
+  }
    openDialog() {
     this.dialog.open(FormulairevehiculeComponent, {
       width:'480px'
