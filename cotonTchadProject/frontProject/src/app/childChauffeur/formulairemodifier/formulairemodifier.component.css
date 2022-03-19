@@ -1,0 +1,63 @@
+mat-form-field{
+    width :80%;
+    margin-left:20px;
+    margin-right:60px;
+  }
+  #btn{
+    height: 55px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #187486;
+    margin-top: 50px;
+    
+}
+mat-sidenav-container{
+  height: 800px;
+  }
+  mat-sidenav{
+      width: 280px;
+      background-color: #3A393C;
+  }
+  .icon-menu{
+      color: #3A393C;
+  }
+  .bar-menu{
+  background-color: #06a86d;
+  }
+  
+.toolbar{
+  color:white;
+  font-size:22px;
+  font-family:cursive;
+}    
+.matlist{
+  color:black;
+  font-size:18px;
+  font-family:cursive;
+  font-weight: bold;
+  
+}
+#file{
+  width: 300px;
+  margin-left: 20px;
+}
+.formgenerale{
+  width:480px;
+  margin-left: 400px;
+  margin-top: -280px;
+}
+.formcontact{
+  width:450px;
+  margin-left: 950px;
+  margin-top: -331px;
+}
+.formsalaire{
+  margin-top: 170px;
+  margin-left: 20px;
+}
+h2{
+  color:#2691a7;
+
+}

@@ -1,8 +1,9 @@
 <h1 mat-dialog-title style="text-align:center;">Remplir le formulaire</h1><br>
 <div mat-card-content >
     <mat-label style="font-size:16px;">Image</mat-label><br>
-    <img [src]="chauffeurImage" name="photo" width="50" height="50" /> <br>
-    <input class="form-control" type="file" [(ngModel)]="chauffeur.photo" (change)="HandleFileInput($any($event).target.files)"  ><br>
+    <img [src]="chauffeurImage" name="photo" width="50" height="50" />
+    
+   <input class="form-control" type="file" [(ngModel)]="chauffeur.photo" (change)="HandleFileInput($any($event).target.files)"  ><br>
 
   <mat-form-field appearance="outline">
     <mat-label style="font-size:16px;">Nom </mat-label>

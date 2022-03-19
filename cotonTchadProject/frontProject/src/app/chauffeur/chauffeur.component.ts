@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ChauffeurService } from '../services/chauffeur.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormulaireajouterComponent } from '../childChauffeur/formulaireajouter/formulaireajouter.component';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-chauffeur',
   templateUrl: './chauffeur.component.html',
@@ -13,11 +14,15 @@ export class ChauffeurComponent implements OnInit {
   responsablelogistiquePath:String;
   chauffeurs=[{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}];
   chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}
-  constructor(private router:Router , private chauffeurservice: ChauffeurService, private dialog: MatDialog) {
+  constructor(private router:Router , private chauffeurservice: ChauffeurService, private dialog: MatDialog ,private http:HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getChauffeurs();
     
   }
+  onSelect(chauffeur:any){
+    this.router.navigate(['/modifierChauffeur',chauffeur.id]);
+  }
+
   logout() { 
     let isloggedIn: Boolean = false;
     localStorage.removeItem('loggedUser');
@@ -26,9 +31,10 @@ export class ChauffeurComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(FormulaireajouterComponent, {
-      width:'480px'
+      width:'500px'
     });
   }
+  //récupérer liste des chauffeurs
   getChauffeurs(){
     this.chauffeurservice.getAllChauffeurs().subscribe(
       data=>{
@@ -36,11 +42,22 @@ export class ChauffeurComponent implements OnInit {
       },
       error =>{
         console.log(error);
-      }
-    );
+      });
+    }
+
+    //supprimer iun chauffeur 
+    deleteChauffeur(ChauffeurId :any){
+      let baseurl = "http://127.0.0.1:8000/";
       
+      this.http.delete(baseurl +'chauffeurs/'+ChauffeurId+ '/').subscribe(
+        data => {
+          this.getChauffeurs();
+        }, error =>{
+          console.log(error)
+        });
       
     }
+
 
   ngOnInit(): void {
   }

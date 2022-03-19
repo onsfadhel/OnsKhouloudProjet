@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { NgSrcModule } from 'ng-src';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
+import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/f
     LoginComponent,
     HeaderComponent,
     FormulaireajouterComponent,
+    FormulairemodifierComponent,
     
   ],
   imports: [
