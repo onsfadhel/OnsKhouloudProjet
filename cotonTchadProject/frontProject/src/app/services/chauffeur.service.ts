@@ -13,6 +13,10 @@ export class ChauffeurService {
     {headers: this.httpHeaders});
 
   }
+  ajouterChauffeur(chauffeur:any): Observable<any> {
+    return this.http.post(this.baseurl+ 'chauffeurs/',chauffeur,{headers: this.httpHeaders});
+
+  }
 
   
 }
