@@ -34,6 +34,9 @@ import { HeaderComponent } from './header/header.component';
 import { NgSrcModule } from 'ng-src';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
+import { UtilisateursComponent } from './administrateur/utilisateurs/utilisateurs.component';
+import { UsinesComponent } from './administrateur/usines/usines.component';
+import { AjouterutilisateurComponent } from './administrateur/childutilisateur/ajouterutilisateur/ajouterutilisateur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +48,9 @@ import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier
     HeaderComponent,
     FormulaireajouterComponent,
     FormulairemodifierComponent,
+    UtilisateursComponent,
+    UsinesComponent,
+    AjouterutilisateurComponent,
     
   ],
   imports: [

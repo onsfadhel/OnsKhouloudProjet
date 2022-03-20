@@ -44,7 +44,7 @@ export class FormulaireajouterComponent implements OnInit {
     fd.append('salaire',this.chauffeur.salaire);
     this.http.post(baseurl + 'chauffeurs/',fd).subscribe(
       response=>{
-        alert("La véhicule "+this.chauffeur.nom+" est ajoutée"),
+        alert("le chauffeur "+this.chauffeur.nom+" "+this.chauffeur.prenom +" est ajoutée"),
         this.router.navigate(['/chauffeurs'])
       }, error =>{
         console.log(error)

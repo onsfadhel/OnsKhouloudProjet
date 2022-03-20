@@ -14,7 +14,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class UtlisateursSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model= utilisateurs
-        fields = ['id','nom','prenom','email','password','téléphone','adresse','role']
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
 
 class ChauffeurSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

@@ -32,9 +32,6 @@ export class VehiculecontentComponent implements OnInit {
     });
   }
   
-  
-  
-
    getVehicules = () => {
     this.api.getAllVehicules().subscribe(
       data => {

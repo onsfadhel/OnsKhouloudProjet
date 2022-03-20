@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsinesComponent } from './administrateur/usines/usines.component';
+import { UtilisateursComponent } from './administrateur/utilisateurs/utilisateurs.component';
 import { ChauffeurComponent } from './chauffeur/chauffeur.component';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path:"",component:LoginComponent},
   {path:"ajouterChauffeur",component:FormulaireajouterComponent},
   {path:'modifierChauffeur/:id',component:FormulairemodifierComponent},
+  {path:'admin/usines',component:UsinesComponent},
+  {path:'admin/utilisateurs',component:UtilisateursComponent},
 
 ];
 

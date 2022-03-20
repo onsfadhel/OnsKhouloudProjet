@@ -17,12 +17,19 @@ export class ChauffeurService {
     return this.http.post(this.baseurl+ 'chauffeurs/',chauffeur,{headers: this.httpHeaders});
 
   }
+  //modifier un chauffeur 
   updateChauffeur(chauffeur:any): Observable<any> {
     const body = {id: chauffeur.id ,photo: chauffeur.photo ,nom: chauffeur.nom, prenom: chauffeur.prenom ,Birthday: chauffeur.Birthday ,
       phone: chauffeur.phone ,adresse: chauffeur.adresse ,permis: chauffeur.permis,salaire: chauffeur.salaire};
     return this.http.put(this.baseurl + 'chauffeurs/' + chauffeur.id + '/', body,
     {headers: this.httpHeaders});
   }
+  //récupérer un chauffeur par son id 
+  getChauffeurById(id:any): Observable<any> {
+    return this.http.get(this.baseurl + 'chauffeurs/' + id + '/',
+    {headers: this.httpHeaders});
+  }
+
 
   
 }
