@@ -14,4 +14,15 @@ export class UsersService {
     return this.http.get(this.baseurl + 'utilisateurs/',
     {headers: this.httpHeaders});
   }
+  getUserById(id:any): Observable<any> {
+    return this.http.get(this.baseurl + 'utilisateurs/' + id + '/',
+    {headers: this.httpHeaders});
+  }
+  //update user 
+  updateUser(utilisateur:any): Observable<any> {
+    const body = {id:utilisateur.id ,nom: utilisateur.nom ,prenom: utilisateur.prenom,email:utilisateur.email,
+      password:utilisateur.password ,phone: utilisateur.phone,adresse:utilisateur.adresse,role: utilisateur.role};
+    return this.http.put(this.baseurl + 'utilisateurs/' + utilisateur.id + '/', body,
+    {headers: this.httpHeaders});
+  }
 }

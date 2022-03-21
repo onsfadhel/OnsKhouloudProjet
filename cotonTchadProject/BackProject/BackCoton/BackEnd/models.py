@@ -28,3 +28,13 @@ class chauffeurs(models.Model):
     adresse=models.CharField(max_length=50)
     permis=models.CharField( max_length=50,blank=True, null=True )
     salaire=models.FloatField(blank=True, null=True )
+
+class usines(models.Model):
+    nom=models.CharField(max_length=50)
+    age=models.DateField(auto_now=False, auto_now_add=False)
+    typeEgreneuse=models.CharField( max_length=50)
+    nbreEgreneuse=models.IntegerField()
+    capacite=models.FloatField()
+    personnelPermanent=models.IntegerField()
+    personnelSaisonnier=models.IntegerField()
+    personnelOccasionnel=models.IntegerField()

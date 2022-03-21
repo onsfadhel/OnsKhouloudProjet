@@ -1,0 +1,44 @@
+<h1 mat-dialog-title style="text-align:center;">Remplir le formulaire</h1><br>
+<div mat-card-content >
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Nom Usine</mat-label>
+    <input matInput type="text"  name="nom" [(ngModel)]="usine.nom">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Age</mat-label>
+    <input matInput name="age" [(ngModel)]="usine.age" type="date" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Type Egreneuse</mat-label>
+    <input matInput  type="text" name="typeEgreneuse" [(ngModel)]="usine.typeEgreneuse">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Nbre d'Egreneuse</mat-label>
+    <input matInput name="nbreEgreneuse" [(ngModel)]="usine.nbreEgreneuse" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Capacité d'Egrenage par Ans</mat-label>
+    <input matInput name="capacite" [(ngModel)]="usine.capacite" type="number" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Personnel Permanent</mat-label>
+    <input matInput name="personnelPermanent" [(ngModel)]="usine.personnelPermanent" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Personnel Saisonnier</mat-label>
+    <input matInput name="personnelSaisonnier" [(ngModel)]="usine.personnelSaisonnier" type="text">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">personnel Occasionnel</mat-label>
+    <input matInput name="personnelOccasionnel" [(ngModel)]="usine.personnelOccasionnel" type="text" >
+  </mat-form-field>
+
+  
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button  id="btn" (click)="registerUsine()">Ajouter Une Usine</button>
+</div>

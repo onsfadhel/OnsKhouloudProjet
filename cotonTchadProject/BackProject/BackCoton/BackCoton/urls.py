@@ -26,6 +26,7 @@ router.register(r'vehicules', views.vehiculeViewSet)
 router.register(r'utilisateurs', views.UtilisateursViewSet)
 router.register(r'chauffeurs',views.ChauffeursViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'usines',views.UsinesViewSet)
 
 urlpatterns = [
      path('admin/', admin.site.urls),

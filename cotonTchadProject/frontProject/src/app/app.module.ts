@@ -37,6 +37,9 @@ import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier
 import { UtilisateursComponent } from './administrateur/utilisateurs/utilisateurs.component';
 import { UsinesComponent } from './administrateur/usines/usines.component';
 import { AjouterutilisateurComponent } from './administrateur/childutilisateur/ajouterutilisateur/ajouterutilisateur.component';
+import { ModifierutilisateurComponent } from './administrateur/childutilisateur/modifierutilisateur/modifierutilisateur.component';
+import { AjouterUsineComponent } from './administrateur/childUsine/ajouter-usine/ajouter-usine.component';
+import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usine/modifier-usine.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +54,9 @@ import { AjouterutilisateurComponent } from './administrateur/childutilisateur/a
     UtilisateursComponent,
     UsinesComponent,
     AjouterutilisateurComponent,
+    ModifierutilisateurComponent,
+    AjouterUsineComponent,
+    ModifierUsineComponent,
     
   ],
   imports: [

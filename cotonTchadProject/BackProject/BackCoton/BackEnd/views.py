@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from BackEnd.Serializers import vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer , ChauffeurSerializer
-from .models import vehicules , utilisateurs , chauffeurs
+from BackEnd.Serializers import vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer , ChauffeurSerializer ,UsinesSerializer
+from .models import vehicules , utilisateurs , chauffeurs, usines
 
 class vehiculeViewSet(viewsets.ModelViewSet):
     """
@@ -36,3 +36,7 @@ class UtilisateursViewSet(viewsets.ModelViewSet):
 class ChauffeursViewSet(viewsets.ModelViewSet):
     queryset = chauffeurs.objects.all()
     serializer_class = ChauffeurSerializer
+
+class UsinesViewSet(viewsets.ModelViewSet):
+    queryset = usines.objects.all()
+    serializer_class = UsinesSerializer
