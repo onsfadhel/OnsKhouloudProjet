@@ -70,8 +70,6 @@ export class FormulairemodifierComponent implements OnInit {
   }
   //modifier le chauffeur en cliquant su le boutton 
   updateChauffeur = () => {
-    const fd =new FormData();
-    
     let baseurl = "http://127.0.0.1:8000/";
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     const body = {id: this.selectedChauffeur.id ,photo :this.chauffeurImage.name ,nom: this.selectedChauffeur.nom, 

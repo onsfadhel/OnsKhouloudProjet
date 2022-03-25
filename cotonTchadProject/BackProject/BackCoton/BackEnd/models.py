@@ -18,6 +18,11 @@ class utilisateurs(models.Model):
     phone= PhoneNumberField()
     adresse=models.CharField( max_length=50)
     role=models.CharField( max_length=50)
+    is_verified = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['nom']
 
 class chauffeurs(models.Model):
     photo=models.ImageField( upload_to='pictures', height_field=None, width_field=None, max_length=100,blank=True, null=True )
@@ -38,3 +43,14 @@ class usines(models.Model):
     personnelPermanent=models.IntegerField()
     personnelSaisonnier=models.IntegerField()
     personnelOccasionnel=models.IntegerField()
+
+class Borderauxdelivraison(models.Model):
+    numerobordereau=models.IntegerField()
+    date=models.DateField(auto_now=False, auto_now_add=False)
+    lieu=models.CharField( max_length=50)
+    modalitepaiement=models.CharField(max_length=50)
+    modalitelivraison=models.CharField(max_length=50)
+    datePaie=models.DateField(auto_now=False, auto_now_add=False)
+    delailivraison=models.DateField(auto_now=False, auto_now_add=False)
+    observation=models.CharField(max_length=50)
+    tauxremise=models.FloatField()

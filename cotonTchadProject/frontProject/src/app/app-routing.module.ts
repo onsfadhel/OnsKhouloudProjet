@@ -4,12 +4,16 @@ import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usi
 import { ModifierutilisateurComponent } from './administrateur/childutilisateur/modifierutilisateur/modifierutilisateur.component';
 import { UsinesComponent } from './administrateur/usines/usines.component';
 import { UtilisateursComponent } from './administrateur/utilisateurs/utilisateurs.component';
+import { BordereauxComponent } from './bordereauxdutransport/bordereaux/bordereaux.component';
+import { ModifierborderauxComponent } from './bordereauxdutransport/childbordereaux/modifierborderaux/modifierborderaux.component';
 import { ChauffeurComponent } from './chauffeur/chauffeur.component';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { FormulairevehiculeComponent } from './childVehicule/formulairevehicule/formulairevehicule.component';
 import { LoginComponent } from './login/login.component';
+import { ResetemailComponent } from './resetemail/resetemail.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { VehiculecontentComponent } from './vehiculecontent/vehiculecontent.component';
 
 const routes: Routes = [
@@ -26,6 +30,10 @@ const routes: Routes = [
   {path:'admin/utilisateurs',component:UtilisateursComponent},
   {path:'admin/utilisateur/modifier/:id',component:ModifierutilisateurComponent},
   {path:"",component:LoginComponent},
+  {path:'resetemail',component:ResetemailComponent},
+  {path:'resetpassword',component:ResetpasswordComponent},
+  {path:'bordereaux',component: BordereauxComponent},
+  {path:'modifierBordereau/:id',component:ModifierborderauxComponent},
 
 ];
 

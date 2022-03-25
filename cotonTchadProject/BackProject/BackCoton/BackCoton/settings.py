@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'BackEnd',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +155,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+#utiliser des images au django 
+
 MEDIA_URL='/pictures/'
 
 MEDIA_ROOt=os.path.join(BASE_DIR,'pictures')
@@ -164,5 +167,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10 ,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'te32718@gmail.com' 
+EMAIL_HOST_PASSWORD = '.789.testsenderemail.789.'
+EMAIL_USE_TLS = True

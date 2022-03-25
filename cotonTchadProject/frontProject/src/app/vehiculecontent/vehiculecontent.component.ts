@@ -12,8 +12,6 @@ import { FormulairevehiculeComponent } from '../childVehicule/formulairevehicule
 })
 export class VehiculecontentComponent implements OnInit {
   vehicules = [{id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: 'rrrrrrrrr'}];
-  @Input() id:any;
-  @Input() matricule: any;
   responsablelogistiquePath : String;
   opened=false;
    constructor(private http: HttpClient,private api: ApiService,private router: Router,private dialog: MatDialog) {

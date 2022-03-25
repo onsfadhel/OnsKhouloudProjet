@@ -1,6 +1,7 @@
 import { Injectable  } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable ,BehaviorSubject } from 'rxjs';
+import { FormGroup, AbstractControl } from "@angular/forms";
 @Injectable({
   providedIn: 'root'
 })
@@ -17,5 +18,10 @@ export class LoginService {
     return this.http.get(this.baseurl + 'utilisateurs/',
     {headers: this.httpHeaders});
   }
-  
+  requestReset(body :any): Observable<any> {
+    return this.http.post(this.baseurl+'request-reset-email/', body ,{headers: this.httpHeaders});
+  }
+  changePassword(model: any) {
+    return this.http.post(this.baseurl + 'change-password/', model ,{headers: this.httpHeaders});
+  }
 }

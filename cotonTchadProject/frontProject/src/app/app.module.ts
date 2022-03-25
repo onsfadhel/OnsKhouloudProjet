@@ -40,6 +40,12 @@ import { AjouterutilisateurComponent } from './administrateur/childutilisateur/a
 import { ModifierutilisateurComponent } from './administrateur/childutilisateur/modifierutilisateur/modifierutilisateur.component';
 import { AjouterUsineComponent } from './administrateur/childUsine/ajouter-usine/ajouter-usine.component';
 import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usine/modifier-usine.component';
+import { ResetemailComponent } from './resetemail/resetemail.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { BordereauxComponent } from './bordereauxdutransport/bordereaux/bordereaux.component';
+import { AjouterbordereauxComponent } from './bordereauxdutransport/childbordereaux/ajouterbordereaux/ajouterbordereaux.component';
+import { ModifierborderauxComponent } from './bordereauxdutransport/childbordereaux/modifierborderaux/modifierborderaux.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +63,11 @@ import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usi
     ModifierutilisateurComponent,
     AjouterUsineComponent,
     ModifierUsineComponent,
+    ResetemailComponent,
+    ResetpasswordComponent,
+    BordereauxComponent,
+    AjouterbordereauxComponent,
+    ModifierborderauxComponent,
     
   ],
   imports: [
@@ -65,6 +76,7 @@ import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usi
     NgbModule,
     AppRoutingModule,
     MatDatepickerModule,
+    ReactiveFormsModule,
     NgSrcModule,
     MatMenuModule,
     MatDialogModule,
