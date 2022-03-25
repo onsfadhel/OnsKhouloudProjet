@@ -5,6 +5,7 @@ import { ModifierutilisateurComponent } from './administrateur/childutilisateur/
 import { UsinesComponent } from './administrateur/usines/usines.component';
 import { UtilisateursComponent } from './administrateur/utilisateurs/utilisateurs.component';
 import { BordereauxComponent } from './bordereauxdutransport/bordereaux/bordereaux.component';
+import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/bordereauxpdf/bordereauxpdf.component';
 import { ModifierborderauxComponent } from './bordereauxdutransport/childbordereaux/modifierborderaux/modifierborderaux.component';
 import { ChauffeurComponent } from './chauffeur/chauffeur.component';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'resetpassword',component:ResetpasswordComponent},
   {path:'bordereaux',component: BordereauxComponent},
   {path:'modifierBordereau/:id',component:ModifierborderauxComponent},
+  {path:'pdf/:id',component:BordereauxpdfComponent},
 
 ];
 

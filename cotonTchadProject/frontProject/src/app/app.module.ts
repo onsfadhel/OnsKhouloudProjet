@@ -46,6 +46,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { BordereauxComponent } from './bordereauxdutransport/bordereaux/bordereaux.component';
 import { AjouterbordereauxComponent } from './bordereauxdutransport/childbordereaux/ajouterbordereaux/ajouterbordereaux.component';
 import { ModifierborderauxComponent } from './bordereauxdutransport/childbordereaux/modifierborderaux/modifierborderaux.component';
+import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/bordereauxpdf/bordereauxpdf.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { ModifierborderauxComponent } from './bordereauxdutransport/childbordere
     BordereauxComponent,
     AjouterbordereauxComponent,
     ModifierborderauxComponent,
+    BordereauxpdfComponent,
     
   ],
   imports: [

@@ -59,5 +59,8 @@ export class BordereauxComponent implements OnInit {
   gomodify(bordereau : any){
     this.router.navigate(['/modifierBordereau',bordereau.id]);
   }
+  gopdf(bordereau : any){
+    this.router.navigate(['/pdf',bordereau.id]);
+  }
 
 }
