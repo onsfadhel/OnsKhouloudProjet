@@ -33,6 +33,7 @@ router.register(r'chauffeurs',views.ChauffeursViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'usines',views.UsinesViewSet)
 router.register(r'bordereauxlivraison',views.BorderauxdelivraisonViewSet)
+router.register(r'transactions',views.transactionsViewSet)
 
 urlpatterns = [
      path('admin/', admin.site.urls),

@@ -1,20 +1,20 @@
-import { ApiService } from 'src/app/services/api.service';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormulairevehiculeComponent } from '../childVehicule/formulairevehicule/formulairevehicule.component';
+import { VehiculeService } from '../services/vehicule.service';
 @Component({
   selector: 'app-vehiculecontent',
   templateUrl: './vehiculecontent.component.html',
   styleUrls: ['./vehiculecontent.component.css'],
-  providers:[ApiService],
+  providers:[VehiculeService],
 })
 export class VehiculecontentComponent implements OnInit {
-  vehicules = [{id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: 'rrrrrrrrr'}];
+  vehicules = [{id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'',consommation: ''}];
   responsablelogistiquePath : String;
   opened=false;
-   constructor(private http: HttpClient,private api: ApiService,private router: Router,private dialog: MatDialog) {
+   constructor(private http: HttpClient,private api: VehiculeService,private router: Router,private dialog: MatDialog) {
     this.getVehicules();
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
    }

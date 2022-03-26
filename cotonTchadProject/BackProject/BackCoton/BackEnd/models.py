@@ -54,3 +54,13 @@ class Borderauxdelivraison(models.Model):
     delailivraison=models.DateField(auto_now=False, auto_now_add=False)
     observation=models.CharField(max_length=50)
     tauxremise=models.FloatField()
+
+class transactions(models.Model):
+    transaction=models.CharField(max_length=50)
+    codeproduit=models.IntegerField()
+    chauffeur=models.ForeignKey("chauffeurs", on_delete=models.CASCADE ,blank=True, null=True )
+    datededepart=models.DateField(auto_now=False, auto_now_add=False)
+    adressededepart=models.CharField(max_length=50)
+    datearrive=models.DateField(auto_now=False, auto_now_add=False)
+    adressededestination=models.CharField(max_length=50)
+    notes=models.CharField(max_length=50)

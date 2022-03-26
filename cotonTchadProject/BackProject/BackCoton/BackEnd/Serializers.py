@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import vehicules , chauffeurs
+from .models import vehicules , chauffeurs ,transactions
 from .models import utilisateurs , usines ,Borderauxdelivraison
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str , smart_bytes , DjangoUnicodeDecodeError
@@ -42,6 +42,12 @@ class BorderauxdelivraisonSerializer(serializers.HyperlinkedModelSerializer):
         model = Borderauxdelivraison
         fields=['id','numerobordereau','date','lieu','modalitepaiement','modalitelivraison','datePaie','delailivraison','observation','tauxremise']
 
+class transactionsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= transactions
+        fields=['id','transaction','codeproduit','chauffeur','datededepart','adressededepart','datearrive','adressededestination','notes']
+
+
 class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(min_length=2)
 
@@ -59,6 +65,9 @@ class ChangePasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+
 
 
 

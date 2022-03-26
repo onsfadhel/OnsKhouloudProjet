@@ -1,8 +1,8 @@
 import { Component, OnInit , Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { VehiculeService } from 'src/app/services/vehicule.service';
 @Component({
   selector: 'app-formulairemodification',
   templateUrl: './formulairemodification.component.html',
@@ -16,7 +16,7 @@ export class FormulairemodificationComponent implements OnInit {
   selectedVehicule;
   responsablelogistiquePath : String;
   opened=false;
-  constructor(private http: HttpClient, private router:Router,private activatedroute: ActivatedRoute,private api:ApiService) { 
+  constructor(private http: HttpClient, private router:Router,private activatedroute: ActivatedRoute,private api:VehiculeService) { 
     this.selectedVehicule={id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: ''};
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
   

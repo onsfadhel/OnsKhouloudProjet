@@ -30,7 +30,6 @@ import { AngularSplitModule } from 'angular-split';
 import { FormsModule } from '@angular/forms';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
 import { NgSrcModule } from 'ng-src';
 import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/formulaireajouter.component';
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
@@ -47,6 +46,9 @@ import { BordereauxComponent } from './bordereauxdutransport/bordereaux/borderea
 import { AjouterbordereauxComponent } from './bordereauxdutransport/childbordereaux/ajouterbordereaux/ajouterbordereaux.component';
 import { ModifierborderauxComponent } from './bordereauxdutransport/childbordereaux/modifierborderaux/modifierborderaux.component';
 import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/bordereauxpdf/bordereauxpdf.component';
+import { TransactionsComponent } from './transactions/transactions/transactions.component';
+import { AjoutertransactionComponent } from './transactions/childTransaction/ajoutertransaction/ajoutertransaction.component';
+import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,6 @@ import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/
     FormulairevehiculeComponent,
     FormulairemodificationComponent,
     LoginComponent,
-    HeaderComponent,
     FormulaireajouterComponent,
     FormulairemodifierComponent,
     UtilisateursComponent,
@@ -70,6 +71,9 @@ import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/
     AjouterbordereauxComponent,
     ModifierborderauxComponent,
     BordereauxpdfComponent,
+    TransactionsComponent,
+    AjoutertransactionComponent,
+    ModifiertransactionComponent,
     
   ],
   imports: [

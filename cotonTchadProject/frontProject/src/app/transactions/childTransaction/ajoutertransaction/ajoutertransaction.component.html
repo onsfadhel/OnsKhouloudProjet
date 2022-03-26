@@ -1,0 +1,42 @@
+<h1 mat-dialog-title style="text-align:center;">Remplir le formulaire</h1><br>
+<div mat-card-content >
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">transaction</mat-label>
+    <input matInput type="text"  name="transaction" [(ngModel)]="transaction.transaction">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Code produit</mat-label>
+    <input matInput name="codeproduit" [(ngModel)]="transaction.codeproduit" type="number" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Chauffeur</mat-label>
+    <input matInput name="Chauffeur" type="text" [(ngModel)]="transaction.chauffeur">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">date de départ</mat-label>
+    <input matInput name="datededepart" [(ngModel)]="transaction.datededepart" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Adresse de départ</mat-label>
+    <input matInput name="adressededepart" [(ngModel)]="transaction.adressededepart" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Date d'arrivé</mat-label>
+    <input matInput name="datearrive" [(ngModel)]="transaction.datearrive" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Adresse de destination</mat-label>
+    <input matInput name="adressededestination" [(ngModel)]="transaction.adressededestination" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Notes</mat-label>
+    <input matInput name="observation" [(ngModel)]="transaction.notes" type="text" >
+  </mat-form-field>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button  id="btn" (click)="registertransaction()">Ajouter Transaction</button>
+</div>

@@ -13,8 +13,8 @@ from django.conf import settings
 from rest_framework import generics, status, views, permissions
 from rest_framework import permissions
 from BackEnd.Serializers import ResetPasswordEmailRequestSerializer ,vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer , ChauffeurSerializer ,UsinesSerializer
-from BackEnd.Serializers import ChangePasswordSerializer , BorderauxdelivraisonSerializer
-from .models import vehicules , utilisateurs , chauffeurs, usines , Borderauxdelivraison
+from BackEnd.Serializers import ChangePasswordSerializer , BorderauxdelivraisonSerializer ,transactionsSerializer
+from .models import vehicules , utilisateurs , chauffeurs, usines , Borderauxdelivraison , transactions
 
 class vehiculeViewSet(viewsets.ModelViewSet):
     """
@@ -56,6 +56,11 @@ class UsinesViewSet(viewsets.ModelViewSet):
 class BorderauxdelivraisonViewSet(viewsets.ModelViewSet):
     queryset= Borderauxdelivraison.objects.all()
     serializer_class = BorderauxdelivraisonSerializer
+
+class transactionsViewSet(viewsets.ModelViewSet):
+    queryset= transactions.objects.all()
+    serializer_class = transactionsSerializer
+
 
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
