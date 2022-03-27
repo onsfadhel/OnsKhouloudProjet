@@ -15,6 +15,7 @@ import { FormulairevehiculeComponent } from './childVehicule/formulairevehicule/
 import { LoginComponent } from './login/login.component';
 import { ResetemailComponent } from './resetemail/resetemail.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { VehiculecontentComponent } from './vehiculecontent/vehiculecontent.component';
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:'modifierBordereau/:id',component:ModifierborderauxComponent},
   {path:'pdf/:id',component:BordereauxpdfComponent},
   {path:'transactions',component:TransactionsComponent},
+  {path:'modifierTransaction/:id',component:ModifiertransactionComponent},
 
 ];
 

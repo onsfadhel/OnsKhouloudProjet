@@ -33,6 +33,8 @@ class chauffeurs(models.Model):
     adresse=models.CharField(max_length=50)
     permis=models.CharField( max_length=50,blank=True, null=True )
     salaire=models.FloatField(blank=True, null=True )
+    def __str__(self):
+        return self.nom
 
 class usines(models.Model):
     nom=models.CharField(max_length=50)

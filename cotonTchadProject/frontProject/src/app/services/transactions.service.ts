@@ -17,5 +17,8 @@ export class TransactionsService {
   ajouterTransaction(transaction:any):Observable<any>{
     return this.http.post(this.baseurl + 'transactions/',transaction,{headers: this.httpHeaders});
   }
+  getTransactionById(id:any): Observable<any> {
+    return this.http.get(this.baseurl + 'transactions/' + id + '/',{headers: this.httpHeaders});
+  }
 
 }

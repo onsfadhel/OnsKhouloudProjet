@@ -13,7 +13,7 @@ export class ChauffeurComponent implements OnInit {
   opened=false;
   responsablelogistiquePath:String;
   chauffeurs=[{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}];
-  chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}
+  chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
   constructor(private router:Router , private chauffeurservice: ChauffeurService, private dialog: MatDialog ,private http:HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getChauffeurs();
