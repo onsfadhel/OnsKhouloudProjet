@@ -49,6 +49,7 @@ import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { AjoutertransactionComponent } from './transactions/childTransaction/ajoutertransaction/ajoutertransaction.component';
 import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
+import { DefaultModule } from './dashboard/layouts/default/default.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { ModifiertransactionComponent } from './transactions/childTransaction/mo
     TransactionsComponent,
     AjoutertransactionComponent,
     ModifiertransactionComponent,
+    
     
   ],
   imports: [
@@ -103,7 +105,8 @@ import { ModifiertransactionComponent } from './transactions/childTransaction/mo
     MatGridListModule ,
     MatIconModule,
     AngularSplitModule,
-    FormsModule 
+    FormsModule,
+    DefaultModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]

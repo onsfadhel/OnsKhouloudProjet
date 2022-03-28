@@ -12,6 +12,8 @@ import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/f
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { FormulairevehiculeComponent } from './childVehicule/formulairevehicule/formulairevehicule.component';
+import { DefaultComponent } from './dashboard/layouts/default/default.component';
+import { DashboardComponent } from './dashboard/modules/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ResetemailComponent } from './resetemail/resetemail.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
@@ -40,6 +42,7 @@ const routes: Routes = [
   {path:'pdf/:id',component:BordereauxpdfComponent},
   {path:'transactions',component:TransactionsComponent},
   {path:'modifierTransaction/:id',component:ModifiertransactionComponent},
+  {path:'dashboard',component: DefaultComponent,children:[{path:'dash',component:DashboardComponent}]},
 
 ];
 
