@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import AbstractBaseUser
 # Create your models here.
 class vehicules(models.Model):
     matricule=models.CharField( max_length=50)
@@ -10,19 +11,20 @@ class vehicules(models.Model):
     freinage=models.CharField( max_length=50)
     consommation=models.CharField( max_length=50)
 
-class utilisateurs(models.Model):
+class utilisateurs(AbstractBaseUser):
     nom=models.CharField(max_length=50)
     prenom=models.CharField(max_length=50)
-    email=models.EmailField(max_length=254)
-    password=models.CharField( max_length=50)
+    email=models.EmailField(max_length=254 , unique=True)
+    password=models.CharField( max_length=255)
     phone= PhoneNumberField()
+    username=None
     adresse=models.CharField( max_length=50)
     role=models.CharField( max_length=50)
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nom']
+    REQUIRED_FIELDS = []
 
 class chauffeurs(models.Model):
     photo=models.ImageField( upload_to='pictures', height_field=None, width_field=None, max_length=100,blank=True, null=True )

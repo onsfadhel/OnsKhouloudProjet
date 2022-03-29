@@ -2,8 +2,12 @@ from django.contrib.auth.models import User, Group
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode 
 from rest_framework import viewsets , generics , status ,views , permissions
 from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
+from django.contrib.auth.hashers import check_password
 from rest_framework.response import Response
-import jwt
+import jwt , datetime
+from rest_framework.response import Response
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.views import APIView
 from django.core.mail import send_mail
 from django.urls import reverse
 from django.contrib.sites.shortcuts import get_current_site
@@ -61,6 +65,60 @@ class transactionsViewSet(viewsets.ModelViewSet):
     queryset= transactions.objects.all()
     serializer_class = transactionsSerializer
 
+class LoginView(APIView):
+    def post(self,request):
+        email = request.data['email']
+        password = request.data['password']
+        user = utilisateurs.objects.filter(email=email).first()
+        
+
+        if user is None:
+            raise AuthenticationFailed('User not found!')
+
+        if  not user.check_password(password):
+            raise AuthenticationFailed("Password incorrect")
+
+        payload = {
+            'id': user.id,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'iat': datetime.datetime.utcnow()
+        }
+
+        token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8')
+
+        response = Response()
+
+        response.set_cookie(key='jwt', value=token, httponly=True)
+        response.data = {
+            'jwt': token
+        }
+        return response
+
+class UserView(APIView):
+
+    def get(self, request):
+        token = request.COOKIES.get('jwt')
+
+        if not token:
+            raise AuthenticationFailed('Unauthenticated!')
+
+        try:
+            payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated!')
+
+        user = utilisateurs.objects.filter(id=payload['id']).first()
+        serializer = UtlisateursSerializer(user)
+        return Response(serializer.data)
+
+class LogoutView(APIView):
+    def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message': 'success'
+        }
+        return response
 
 
 class RequestPasswordResetEmail(generics.GenericAPIView):

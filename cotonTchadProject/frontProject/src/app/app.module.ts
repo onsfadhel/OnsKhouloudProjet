@@ -75,8 +75,6 @@ import { DefaultModule } from './dashboard/layouts/default/default.module';
     TransactionsComponent,
     AjoutertransactionComponent,
     ModifiertransactionComponent,
-    
-    
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService} from 'src/app/services/login.service';
+import { FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,69 +14,34 @@ export class LoginComponent implements OnInit {
   msgerreur="";
   utilisateurs=[{id:'',nom:'',prenom:'',email:'',password:'',téléphone:'',adresse:'',role:''}];
   public loggedUser:any;
+  form: any;
   public isloggedIn: Boolean = false;
   
-  constructor(private router:Router, private login: LoginService) {
-    this.getUsers();
+  constructor(private router:Router, private login: LoginService ,private formBuilder: FormBuilder ,private http : HttpClient) {
     this.loggedUser;
     this.isloggedIn;
    }
 
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: '',
+      password: ''
+    });
   }
 
-    getUsers = () => {
-    this.login.getAllUsers().subscribe(
-      data => {
-        this.utilisateurs=data.results;
-      },
-      error => {
-        console.log(error);
+
+  submit(): void {
+    this.http.post('http://127.0.0.1:8000/login', this.form.getRawValue(), {
+      withCredentials: true
+    }).subscribe(
+      Response=>{
+        this.router.navigate(['/vehicule']); 
+      },error =>{
+        this.msgerreur="Veuillez vérifier votre email et votre mot de passe"
       }
     );
   }
   
-  loginUser(user:any):Boolean{
-    let email=this.user.email;
-    let password=this.user.password;
-    let trouve=false;
-    let loggedUser:string;
-    let isloggedIn: Boolean = false;
-    this.utilisateurs.forEach(function(item) {
-      if(item.email ==email && item.password==password){
-        trouve=true;
-        isloggedIn=true;
-        loggedUser=email;
-        localStorage.setItem('loggedUser',loggedUser);
-        localStorage.setItem('isloggedIn',String(isloggedIn));
-      }  
-      });
-      return trouve;
-  }
-  onloggedin(){
-    let trouve:Boolean=this.loginUser(this.user);
-    if (trouve)
-    {
-      this.msgerreur="";
-      alert("Bienvenu cher utilisateur ");
-      this.router.navigate(['/vehicule']);  
-    }
-    else{
-      this.msgerreur="Veuillez vérifier votre email et votre mot de passe"
-    }
-  }
-
-
-  goResponsable(){
-    this.login.getAllUsers().subscribe(
-        response => {
-          this.router.navigate(['/vehicule']);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }
-    
+  
 }

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200'
 ]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,6 +96,21 @@ CORS_ALLOW_HEADERS = [
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
+]
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 WSGI_APPLICATION = 'BackCoton.wsgi.application'
@@ -178,3 +195,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'te32718@gmail.com' 
 EMAIL_HOST_PASSWORD = '.789.testsenderemail.789.'
 EMAIL_USE_TLS = True
+
+#Authentification 
+AUTH_USER_Model = 'BackEnd.User'
