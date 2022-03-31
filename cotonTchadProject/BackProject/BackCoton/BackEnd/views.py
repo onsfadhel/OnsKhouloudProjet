@@ -136,12 +136,12 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
             uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
             id=user.id
             token = PasswordResetTokenGenerator().make_token(user)
-            current_site = 'localhost:4200/resetpassword/'
+            current_site = 'localhost:4200/resetpassword'
             relativeLink = reverse(
                 'password-reset-confirm', kwargs={'uidb64': uidb64, 'token': token})
 
             redirect_url =  request.data.get('redirect_url', '')
-            absurl = 'http://'+current_site + str(id)
+            absurl = 'http://'+current_site + relativeLink
             email_body = 'Hello, \n Use link below to reset your password  \n' + \
                 absurl
             data = {'email_body': email_body, 'to_email': user.email,
@@ -166,12 +166,12 @@ class PasswordTokenCheckAPI(generics.GenericAPIView):
                 if len(redirect_url) > 3:
                     return CustomRedirect(redirect_url+'?token_valid=False')
                 else:
-                    return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
+                    return CustomRedirect(os.environ.get('http://localhost:4200/resetpassword', '')+'?token_valid=False')
 
             if redirect_url and len(redirect_url) > 3:
                 return CustomRedirect(redirect_url+'?token_valid=True&message=Credentials Valid&uidb64='+uidb64+'&token='+token)
             else:
-                return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
+                return CustomRedirect(os.environ.get('http://localhost:4200/resetpassword', '')+'?token_valid=False')
 
         except DjangoUnicodeDecodeError as identifier:
             try:

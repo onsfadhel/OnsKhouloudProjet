@@ -19,6 +19,8 @@ export class ResetpasswordComponent implements OnInit {
   model: any = {};
   UserId:any;
   relativeLink="";
+  uidb64=this.activatedroute.snapshot.params['uidb64']
+  token=this.activatedroute.snapshot.params['token']
   utilisateur={id:'',nom:'',prenom:'',email:'',password:'',phone:'',adresse:'',role:''};
   passwords={password:'',confirmpassword:''};
   messageerreur="";
@@ -33,8 +35,10 @@ export class ResetpasswordComponent implements OnInit {
     this.model.token = this.activatedroute.snapshot.queryParamMap.get('token');
     this.model.userid = this.activatedroute.snapshot.queryParamMap.get('userid');
     let id = parseInt(this.activatedroute.snapshot.params['id']);
+    let uidb64=this.activatedroute.snapshot.params['uidb64']
+    let token=this.activatedroute.snapshot.params['token']
     let relativeLink= this.activatedroute.snapshot.params['relativeLink']
-    this.UserId=id;
+    /*this.UserId=id;
       this.userservice.getUserById(id).subscribe(
         data=>{
           this.utilisateur=data;
@@ -44,7 +48,7 @@ export class ResetpasswordComponent implements OnInit {
 
         }
         
-      )
+      )*/
   }
   verifypassword(){
     if (this.passwords.password != this.passwords.confirmpassword){
@@ -57,7 +61,7 @@ export class ResetpasswordComponent implements OnInit {
       this.utilisateur.password = this.passwords.password;
       console.log(this.utilisateur.password);
       const body=this.utilisateur
-      this.userservice.resetPassword(this.utilisateur).subscribe(
+      this.http.patch(this.baseurl + 'password-reset-complete', body,{headers: this.httpHeaders}).subscribe(
         Response=>{
           console.log("succes");
         },error =>{
@@ -70,17 +74,5 @@ export class ResetpasswordComponent implements OnInit {
     }
 
   }
-  /*changePassword() {
-    
-    this.authService.changePassword(this.model).subscribe(() => {
-      
-      console.log("success");
-    
-    }, error => {
-      
-      console.log(error);
-      
-    })
-  }*/
 
 }

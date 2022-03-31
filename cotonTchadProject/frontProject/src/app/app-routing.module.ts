@@ -36,7 +36,7 @@ const routes: Routes = [
   {path:'admin/utilisateur/modifier/:id',component:ModifierutilisateurComponent},
   {path:"",component:LoginComponent},
   {path:'resetemail',component:ResetemailComponent},
-  {path:'resetpassword/:id',component:ResetpasswordComponent},
+  {path:'resetpassword/password-reset/:uidb64/:token',component:ResetpasswordComponent},
   {path:'bordereaux',component: BordereauxComponent},
   {path:'modifierBordereau/:id',component:ModifierborderauxComponent},
   {path:'pdf/:id',component:BordereauxpdfComponent},
