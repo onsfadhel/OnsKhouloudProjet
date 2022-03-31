@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from BackEnd import views
 from django.conf import settings
-from BackEnd.views import RequestPasswordResetEmail ,ChangePasswordView , LoginView ,LogoutView
+from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -40,8 +40,10 @@ urlpatterns = [
      path('', include(router.urls)),
      path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
      path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-      path('change-password/', ChangePasswordView.as_view(), name='change-password'),
-     path('request-reset-email/',RequestPasswordResetEmail.as_view(),name="request-reset-email"),
+     path('request-reset-email/', RequestPasswordResetEmail.as_view(),name="request-reset-email"),
+     path('password-reset/<uidb64>/<token>/', PasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
+     path('password-reset-complete', SetNewPasswordAPIView.as_view(), name='password-reset-complete'),
+     
      path('login',LoginView.as_view()),
      path('logout',LogoutView.as_view()),
      path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

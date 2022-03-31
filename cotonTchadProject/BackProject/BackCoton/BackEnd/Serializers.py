@@ -66,21 +66,7 @@ class ResetPasswordEmailRequestSerializer(serializers.Serializer):
         fields = ['email']
 
 
-class ChangePasswordSerializer(serializers.Serializer):
-    model = utilisateurs
-
-    """
-    Serializer for password change endpoint.
-    """
-    old_password = serializers.CharField(required=True)
-    new_password = serializers.CharField(required=True)
-
-
-
-
-
-
-"""class SetNewPasswordSerializer(serializers.Serializer):
+class SetNewPasswordSerializer(serializers.Serializer):
     password = serializers.CharField(
         min_length=6, max_length=68, write_only=True)
     token = serializers.CharField(
@@ -98,14 +84,18 @@ class ChangePasswordSerializer(serializers.Serializer):
             uidb64 = attrs.get('uidb64')
 
             id = force_str(urlsafe_base64_decode(uidb64))
-            utiisateur = utilisateurs.objects.get(id=id)
-            if not PasswordResetTokenGenerator().check_token(utiisateur, token):
+            user = utilisateurs.objects.get(id=id)
+            if not PasswordResetTokenGenerator().check_token(user, token):
                 raise AuthenticationFailed('The reset link is invalid', 401)
 
-            utiisateur.set_password(password)
-            utiisateur.save()
+            user.set_password(password)
+            user.save()
 
-            return (utiisateur)
+            return (user)
         except Exception as e:
             raise AuthenticationFailed('The reset link is invalid', 401)
-        return super().validate(attrs)"""
+        return super().validate(attrs)
+
+
+
+

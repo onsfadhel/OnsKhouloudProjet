@@ -25,4 +25,10 @@ export class UsersService {
     return this.http.put(this.baseurl + 'utilisateurs/' + utilisateur.id + '/', body,
     {headers: this.httpHeaders});
   }
+  resetPassword(utilisateur:any): Observable<any> {
+    const body = {id:utilisateur.id ,nom: utilisateur.nom ,prenom: utilisateur.prenom,email:utilisateur.email,
+      password:utilisateur.password ,phone: utilisateur.phone,adresse:utilisateur.adresse,role: utilisateur.role};
+    return this.http.put(this.baseurl + 'password-reset-complete/' + utilisateur.id + '/', body,
+    {headers: this.httpHeaders});
+}
 }
