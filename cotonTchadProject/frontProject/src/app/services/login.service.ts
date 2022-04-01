@@ -8,8 +8,11 @@ import { FormGroup, AbstractControl } from "@angular/forms";
 export class LoginService {
   baseurl = "http://127.0.0.1:8000/";
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  public roles:string[];
   trouve:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.roles=[];
+  }
   get isLoggedIn() {
     return this.trouve.asObservable();
   }
@@ -23,5 +26,13 @@ export class LoginService {
   }
   changePassword(model: any) {
     return this.http.post(this.baseurl + 'change-password/', model ,{headers: this.httpHeaders});
+  }
+  getUserRoles(user:any){ 
+    let users=this.getAllUsers();   
+    users.forEach((curUser) => {
+      if( curUser.email == user.email) {
+          this.roles = curUser.roles;
+      }
+    });
   }
 }

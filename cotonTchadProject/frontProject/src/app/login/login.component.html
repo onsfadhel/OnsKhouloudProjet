@@ -17,7 +17,7 @@
       <form fxLayoutAlign="stretch" fxLayout="column" class="login-form"  [formGroup]="form" (submit)="submit()" >
         <mat-form-field [style.fontSize.px]=17>
           <div class="i"> <mat-icon>account_circle</mat-icon></div>
-          <div class="x"><input matInput placeholder="Email"  required ngModel name="userEmail" formControlName="email"></div>
+          <div class="x"><input matInput placeholder="Email"  required ngModel name="userEmail" formControlName="email" [(ngModel)]="user.email"></div>
         </mat-form-field>
                  
         <mat-form-field [style.fontSize.px]=17 >
