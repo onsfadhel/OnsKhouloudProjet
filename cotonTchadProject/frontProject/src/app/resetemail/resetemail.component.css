@@ -20,6 +20,7 @@
     text-transform: uppercase;
     margin: 1rem 0;
     cursor: pointer;
+    width: 550px;
     transition: .5s;
     box-sizing: border-box;
 }

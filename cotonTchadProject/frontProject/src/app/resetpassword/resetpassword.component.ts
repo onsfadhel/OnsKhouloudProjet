@@ -26,7 +26,7 @@ export class ResetpasswordComponent implements OnInit {
   messageerreur="";
   baseurl="http://127.0.0.1:8000/";
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private activatedroute: ActivatedRoute, private authService: LoginService , private userservice: UsersService , private http : HttpClient) { 
+  constructor(private activatedroute: ActivatedRoute,private router:Router, private http : HttpClient) { 
 
     this.utilisateur.password = this.passwords.password;
   }
@@ -34,21 +34,8 @@ export class ResetpasswordComponent implements OnInit {
   ngOnInit() {
     this.model.token = this.activatedroute.snapshot.queryParamMap.get('token');
     this.model.userid = this.activatedroute.snapshot.queryParamMap.get('userid');
-    let id = parseInt(this.activatedroute.snapshot.params['id']);
     let uidb64=this.activatedroute.snapshot.params['uidb64']
     let token=this.activatedroute.snapshot.params['token']
-    let relativeLink= this.activatedroute.snapshot.params['relativeLink']
-    /*this.UserId=id;
-      this.userservice.getUserById(id).subscribe(
-        data=>{
-          this.utilisateur=data;
-        },
-        error =>{
-          console.log(error);
-
-        }
-        
-      )*/
   }
   verifypassword(){
     if (this.passwords.password != this.passwords.confirmpassword){
@@ -59,11 +46,12 @@ export class ResetpasswordComponent implements OnInit {
     }
     else {
       this.utilisateur.password = this.passwords.password;
-      console.log(this.utilisateur.password);
-      const body=this.utilisateur
+      const body={password:this.utilisateur.password,token:this.token,uidb64: this.uidb64}
       this.http.patch(this.baseurl + 'password-reset-complete', body,{headers: this.httpHeaders}).subscribe(
         Response=>{
-          console.log("succes");
+          alert("Votre mot de passe est modifié avec succés");
+          this.router.navigate(['/login']);
+
         },error =>{
           console.log(error);
 
