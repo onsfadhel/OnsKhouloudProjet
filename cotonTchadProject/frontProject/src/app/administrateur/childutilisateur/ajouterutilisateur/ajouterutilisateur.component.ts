@@ -17,7 +17,7 @@ export class AjouterutilisateurComponent implements OnInit {
   registerUser(){
     let baseurl = "http://127.0.0.1:8000/";
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    this.http.post(baseurl + 'utilisateurs/',this.utilisateur).subscribe(
+    this.http.post(baseurl + 'register',this.utilisateur).subscribe(
       response=>{
         alert("L'utilisateur' "+this.utilisateur.nom+" est ajoutée"),
         this.router.navigate(['/admin/utilisateurs'])

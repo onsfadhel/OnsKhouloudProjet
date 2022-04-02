@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin/utilisateurs']);
         }
         else{
-          console.log("erreur");
+          this.msgerreur="Vous n'avez pas encore l'accés à notre plateforme";
         }
         /*this.router.navigate(['/vehicule']);*/ 
       },error =>{

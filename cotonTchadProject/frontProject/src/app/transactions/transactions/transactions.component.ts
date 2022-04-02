@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -13,15 +13,16 @@ import { AjoutertransactionComponent } from '../childTransaction/ajoutertransact
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  transactions = [{id:'',transaction:'',codeproduit:'',chauffeur:'',datededepart:'',
+  transactions = [{id:'',transaction:'',codeproduit:'',chauffeur:{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''} ,datededepart:'',
   adressededepart:'',datearrive:'',adressededestination:'',notes:''}];
-  chauffeur : any;
+  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  chauffeur ={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
   opened=false;
   responsablelogistiquePath :String;
   constructor(private router:Router , private dialog : MatDialog , private transactionservice : TransactionsService, private http: HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getTransactions();
-    this.chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
+    this.getChauffeur();
    }
 
   ngOnInit(): void {
@@ -40,28 +41,45 @@ export class TransactionsComponent implements OnInit {
   getTransactions(){
     this.transactionservice.getAlltransactions().subscribe(
       data=>{
-        this.transactions= data.results;
-        console.log(this.transactions);
-        
+        this.transactions= data.results;        
       },
       error =>{
         console.log(error);
       });
     }
-    deleteTransaction(transactionId :any){
-      let baseurl = "http://127.0.0.1:8000/";
+  deleteTransaction(transactionId :any){
+    let baseurl = "http://127.0.0.1:8000/";
       
-      this.http.delete(baseurl +'transactions/'+transactionId+ '/').subscribe(
-        data => {
-          this.getTransactions();
-        }, error =>{
-          console.log(error)
-        });
+    this.http.delete(baseurl +'transactions/'+transactionId+ '/').subscribe(
+      data => {
+        this.getTransactions();
+      }, error =>{
+           console.log(error)
+      });
     }
-    gomodify(transaction : any){
-      this.router.navigate(['/modifierTransaction',transaction.id]);
+  gomodify(transaction : any){
+    this.router.navigate(['/modifierTransaction',transaction.id]);
     }
-
+  //méthode pour remplir transactions[chauffeurs ] selon url
+  getChauffeur(){
+    this.transactionservice.getAlltransactions().subscribe(
+    data=>{
+      this.transactions= data.results; 
+      this.transactions.forEach((transac)=>{
+        this.transactionservice.getChauffeurById(transac.chauffeur).subscribe(
+          data =>{
+            transac.chauffeur=data;
+            console.log(transac.chauffeur);
+          }, error=>{
+            console.log(error);
+          }
+        );
+      })       
+    },
+    error =>{
+      console.log(error);
+    });
+  }
 
 
 }

@@ -20,5 +20,9 @@ export class TransactionsService {
   getTransactionById(id:any): Observable<any> {
     return this.http.get(this.baseurl + 'transactions/' + id + '/',{headers: this.httpHeaders});
   }
+  getChauffeurById(url:any): Observable<any> {
+    return this.http.get(url,{headers: this.httpHeaders});
+  }
+
 
 }
