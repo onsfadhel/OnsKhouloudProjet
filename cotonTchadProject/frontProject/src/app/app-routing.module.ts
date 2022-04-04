@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HighchartsChartComponent } from 'highcharts-angular';
 import { ModifierUsineComponent } from './administrateur/childUsine/modifier-usine/modifier-usine.component';
 import { ModifierutilisateurComponent } from './administrateur/childutilisateur/modifierutilisateur/modifierutilisateur.component';
 import { UsinesComponent } from './administrateur/usines/usines.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path:'pdf/:id',component:BordereauxpdfComponent},
   {path:'transactions',component:TransactionsComponent},
   {path:'modifierTransaction/:id',component:ModifiertransactionComponent},
-  {path:'dashboard',component: DefaultComponent,children:[{path:'dash',component:DashboardComponent}]},
+  {path:'dashboard',component: DefaultComponent,children:[{path:'dashboardlogistique',component:DashboardComponent}]},
+  {path:'highcharts', component: HighchartsChartComponent},
 
 ];
 

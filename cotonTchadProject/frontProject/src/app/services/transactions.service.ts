@@ -9,7 +9,7 @@ export class TransactionsService {
 
   baseurl = "http://127.0.0.1:8000/";
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-
+ 
   constructor(private http : HttpClient) { }
   getAlltransactions(): Observable<any> {
     return this.http.get(this.baseurl + 'transactions/',{headers: this.httpHeaders});
@@ -23,6 +23,10 @@ export class TransactionsService {
   getChauffeurById(url:any): Observable<any> {
     return this.http.get(url,{headers: this.httpHeaders});
   }
+  gettransactions(): Observable<any> {
+    return this.http.get('http://127.0.0.1:8000/departments',{headers: this.httpHeaders});
+  }
+
 
 
 }

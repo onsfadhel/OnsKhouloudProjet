@@ -25,6 +25,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HighchartsChartModule } from 'highcharts-angular';
 import { MatIconModule} from '@angular/material/icon';
 import { AngularSplitModule } from 'angular-split';
 import { FormsModule } from '@angular/forms';
@@ -50,6 +51,7 @@ import { TransactionsComponent } from './transactions/transactions/transactions.
 import { AjoutertransactionComponent } from './transactions/childTransaction/ajoutertransaction/ajoutertransaction.component';
 import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
 import { DefaultModule } from './dashboard/layouts/default/default.module';
+import { HighchartsComponent } from './highcharts/highcharts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +77,7 @@ import { DefaultModule } from './dashboard/layouts/default/default.module';
     TransactionsComponent,
     AjoutertransactionComponent,
     ModifiertransactionComponent,
+    HighchartsComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +89,7 @@ import { DefaultModule } from './dashboard/layouts/default/default.module';
     NgSrcModule,
     MatMenuModule,
     MatDialogModule,
+    HighchartsChartModule,
     MatSelectModule,
     BrowserAnimationsModule,
     MatListModule,

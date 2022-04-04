@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include 
+from django.conf.urls.static import static
+from django.urls import re_path as url
 from rest_framework import routers
+from BackEnd import url
 from BackEnd import views
 from django.conf import settings
-from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,RegisterView
+import BackEnd.views
+from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,RegisterView 
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -44,8 +48,8 @@ urlpatterns = [
      path('password-reset/<uidb64>/<token>/', PasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
      path('register', RegisterView.as_view()),
      path('password-reset-complete', SetNewPasswordAPIView.as_view(), name='password-reset-complete'),
-     
      path('login',LoginView.as_view()),
+     path('',include('BackEnd.url')),
      path('logout',LogoutView.as_view()),
      path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

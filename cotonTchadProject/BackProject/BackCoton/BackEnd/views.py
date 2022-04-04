@@ -7,6 +7,8 @@ from rest_framework.response import Response
 import jwt , datetime
 from django.urls import reverse
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.views import APIView
 from django.core.mail import send_mail
@@ -18,7 +20,7 @@ from django.conf import settings
 from rest_framework import generics, status, views, permissions
 from rest_framework import permissions
 from BackEnd.Serializers import ResetPasswordEmailRequestSerializer ,vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer , ChauffeurSerializer ,UsinesSerializer
-from BackEnd.Serializers import SetNewPasswordSerializer , BorderauxdelivraisonSerializer ,transactionsSerializer
+from BackEnd.Serializers import SetNewPasswordSerializer , BorderauxdelivraisonSerializer ,transactionsSerializer ,DepartmentSerializer
 from .models import vehicules , utilisateurs , chauffeurs, usines , Borderauxdelivraison , transactions
 
 class vehiculeViewSet(viewsets.ModelViewSet):
@@ -195,3 +197,9 @@ class RegisterView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+def departmentApi(request,id=0):
+    if request.method=='GET':
+        transactionss=transactions.objects.all()
+        transactionss_serializer=DepartmentSerializer(transactionss,many=True)
+        return JsonResponse(transactionss_serializer.data,safe=False)

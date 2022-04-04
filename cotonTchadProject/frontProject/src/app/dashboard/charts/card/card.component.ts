@@ -23,6 +23,7 @@ export class CardComponent implements OnInit {
       title: {
         text: 'Véhicules DATA'
       },
+      colors:['#4794fa',' #ac3973','#d580ff','#ff99ff','#ff8080','#ffa64d','#1affb2',,'#ff8080'],
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
       },

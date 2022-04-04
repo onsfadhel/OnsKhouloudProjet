@@ -73,6 +73,12 @@ class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     class Meta:
         fields = ['email']
 
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=transactions
+        fields=['id','transaction','codeproduit','chauffeur','datededepart','adressededepart','datearrive','adressededestination','notes']
+
+
 
 class SetNewPasswordSerializer(serializers.Serializer):
     password = serializers.CharField(

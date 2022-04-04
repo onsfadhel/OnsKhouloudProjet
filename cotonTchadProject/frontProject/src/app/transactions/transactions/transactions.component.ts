@@ -13,7 +13,8 @@ import { AjoutertransactionComponent } from '../childTransaction/ajoutertransact
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  transactions = [{id:'',transaction:'',codeproduit:'',chauffeur:{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''} ,datededepart:'',
+  transactions = [{id:'',transaction:'',codeproduit:'',chauffeur:{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''} ,
+  datededepart:'',
   adressededepart:'',datearrive:'',adressededestination:'',notes:''}];
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   chauffeur ={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
@@ -69,7 +70,6 @@ export class TransactionsComponent implements OnInit {
         this.transactionservice.getChauffeurById(transac.chauffeur).subscribe(
           data =>{
             transac.chauffeur=data;
-            console.log(transac.chauffeur);
           }, error=>{
             console.log(error);
           }
