@@ -15,6 +15,10 @@
       <mat-option value="Tracteur de cour">Tracteur de cour</mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Marque</mat-label>
+    <input matInput name="marque" [(ngModel)]="vehicule.marque" type="text" >
+  </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label style="font-size:16px;">Poid </mat-label>
@@ -22,10 +26,6 @@
   </mat-form-field>
 
 
-  <mat-form-field appearance="outline">
-    <mat-label style="font-size:20px;">Chauffeur </mat-label>
-    <input matInput name="chauffeur" [(ngModel)]="vehicule.chauffeur" type="text" class="form-control">
-  </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label style="font-size:16px;">Vitesse </mat-label>
     <input matInput name="chauffeur" [(ngModel)]="vehicule.vitesse" type="number" class="form-control">

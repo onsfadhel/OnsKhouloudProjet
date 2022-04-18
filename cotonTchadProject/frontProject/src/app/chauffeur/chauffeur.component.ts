@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./chauffeur.component.css']
 })
 export class ChauffeurComponent implements OnInit {
-  opened=false;
+  sideBarOpen=true;
   responsablelogistiquePath:String;
   chauffeurs=[{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}];
   chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
@@ -22,13 +22,10 @@ export class ChauffeurComponent implements OnInit {
   onSelect(chauffeur:any){
     this.router.navigate(['/modifierChauffeur',chauffeur.id]);
   }
-
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
+
   openDialog() {
     this.dialog.open(FormulaireajouterComponent, {
       width:'500px'

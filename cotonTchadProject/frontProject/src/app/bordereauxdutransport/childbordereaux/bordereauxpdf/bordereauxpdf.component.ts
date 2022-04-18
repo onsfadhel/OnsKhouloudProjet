@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import{ jsPDF} from 'jspdf';
 import { BordereauxService } from 'src/app/services/bordereaux.service';
 
@@ -14,9 +14,16 @@ export class BordereauxpdfComponent implements OnInit {
   bordereau={id:'',numerobordereau:'',date:'',lieu:'',modalitepaiement:'',
   modalitelivraison:'',datePaie:'', delailivraison:'', observation:'',tauxremise:''};
   BordereauId:any;
+  responsablelogistiquePath: String;
+  opened= false;
+  sideBarOpen=true;
 
-  constructor(private activatedroute: ActivatedRoute ,private bordereauservice :BordereauxService) { }
-  
+  constructor(private activatedroute: ActivatedRoute ,private bordereauservice :BordereauxService , private router :Router) {
+    this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
+   }
+   sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
   ngOnInit(): void {
     let id = parseInt(this.activatedroute.snapshot.params['id']);
     this.BordereauId=id;

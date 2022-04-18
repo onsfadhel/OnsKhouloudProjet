@@ -6,26 +6,25 @@ import { VehiculeService } from 'src/app/services/vehicule.service';
 @Component({
   selector: 'app-formulairemodification',
   templateUrl: './formulairemodification.component.html',
-  styleUrls: ['./formulairemodification.component.css']
+  styleUrls: ['./formulairemodification.component.css'],
+  providers: [VehiculeService]
 })
 export class FormulairemodificationComponent implements OnInit {
-  vehicule={ id:'',matricule: '',types:'',poid: '',chauffeur :'',vitesse :'',freinage :' ',consommation: ''};
-  vehicules=[{ id:'',matricule: '',types:'',poid: '',chauffeur :'',vitesse :'',freinage :' ',consommation: ''}];
+  vehicule={ id:'',matricule: '',types:'',marque:'',poid: '',vitesse :'',freinage :' ',consommation: ''};
+  vehicules=[{ id:'',matricule: '',types:'',marque:'',poid: '',vitesse :'',freinage :' ',consommation: ''}];
   public VehiculeId :any ;
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   selectedVehicule;
+  sideBarOpen=true;
   responsablelogistiquePath : String;
   opened=false;
   constructor(private http: HttpClient, private router:Router,private activatedroute: ActivatedRoute,private api:VehiculeService) { 
-    this.selectedVehicule={id:'',matricule: '',types: '',poid: '',chauffeur:'',vitesse: '',freinage:'5',consommation: ''};
+    this.selectedVehicule={id:'',matricule: '',types: '',marque:'',poid: '',vitesse: '',freinage:'',consommation: ''};
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
   
   }
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
   ngOnInit(): void {

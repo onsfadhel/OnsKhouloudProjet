@@ -12,17 +12,21 @@ export class ModifierutilisateurComponent implements OnInit {
   IconUserPath:String;
   adminImagePath:any;
   UtilisateurId:any;
+  sideBarOpen =true;
   constructor(private router : Router, private activatedRoute: ActivatedRoute ,private userService :UsersService) {
     this.selectedUser= {id:'',nom:'',prenom:'',email:'',password:'',phone:'',adresse:'',role:''};
     this.IconUserPath="./assets/images/user.png";
     this.adminImagePath='./assets/images/admin.png';
    }
-  logout() { 
+   sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+  /*logout() { 
     let isloggedIn: Boolean = false;
     localStorage.removeItem('loggedUser');
     localStorage.setItem('isloggedIn',String(isloggedIn));
     this.router.navigate(['/login']);
-  }
+  }*/
 
   ngOnInit(): void {
      //récupérer le chauffeur avec l'id passé en param

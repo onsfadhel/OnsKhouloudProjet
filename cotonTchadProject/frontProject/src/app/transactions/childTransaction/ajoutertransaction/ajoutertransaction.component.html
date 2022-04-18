@@ -6,14 +6,18 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label style="font-size:16px;">Code produit</mat-label>
-    <input matInput name="codeproduit" [(ngModel)]="transaction.codeproduit" type="number" >
+    <mat-label style="font-size:16px;">produit-id</mat-label>
+    <input matInput name="produit_id" [(ngModel)]="transaction.produit_id" type="text" >
   </mat-form-field>
 
 
   <mat-form-field appearance="outline">
-    <mat-label style="font-size:16px;">Chauffeur</mat-label>
-    <input matInput name="Chauffeur" type="text" [(ngModel)]="transaction.chauffeur">
+    <mat-label style="font-size:16px;">Chauffeur_id</mat-label>
+    <input matInput name="Chauffeur_id" type="text" [(ngModel)]="transaction.chauffeur_id">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Vehicule_id</mat-label>
+    <input matInput name="vehicule_id" type="text" [(ngModel)]="transaction.vehicule_id">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label style="font-size:16px;">date de départ</mat-label>

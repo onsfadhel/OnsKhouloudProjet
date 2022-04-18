@@ -22,7 +22,7 @@ from BackEnd import url
 from BackEnd import views
 from django.conf import settings
 import BackEnd.views
-from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,RegisterView 
+from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,UserView ,RegisterView 
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -34,10 +34,14 @@ router = routers.DefaultRouter()
 router.register(r'vehicules', views.vehiculeViewSet)
 router.register(r'utilisateurs', views.UtilisateursViewSet)
 router.register(r'chauffeurs',views.ChauffeursViewSet)
-router.register(r'groups', views.GroupViewSet)
 router.register(r'usines',views.UsinesViewSet)
+router.register(r'produits',views.produitsViewSet)
 router.register(r'bordereauxlivraison',views.BorderauxdelivraisonViewSet)
 router.register(r'transactions',views.transactionsViewSet)
+router.register(r'clients',views.clientsViewSet)
+router.register(r'factureProduction',views.factureProductionViewSet)
+
+
 
 urlpatterns = [
      path('admin/', admin.site.urls),
@@ -49,7 +53,8 @@ urlpatterns = [
      path('register', RegisterView.as_view()),
      path('password-reset-complete', SetNewPasswordAPIView.as_view(), name='password-reset-complete'),
      path('login',LoginView.as_view()),
+     path('logout', LogoutView.as_view()),
      path('',include('BackEnd.url')),
-     path('logout',LogoutView.as_view()),
+     path('userJwt',UserView.as_view()),
      path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,39 @@
+<h1 mat-dialog-title style="text-align:center;">Remplir le formulaire</h1><br>
+<div mat-card-content >
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Num facture</mat-label>
+    <input matInput type="text"  name="numfacture" [(ngModel)]="facture.numFacture">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">produit-id</mat-label>
+    <input matInput name="produit_id" [(ngModel)]="facture.produit_id" type="text" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix Unite</mat-label>
+    <input matInput name="PrixUnite" type="text" [(ngModel)]="facture.PrixUnite">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Quantité</mat-label>
+    <input matInput name="Qte" type="text" [(ngModel)]="facture.Qte">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Client_Id</mat-label>
+    <input matInput name="clientId" [(ngModel)]="facture.client_id" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Date de creation</mat-label>
+    <input matInput name="datedecreation" [(ngModel)]="facture.datedecreation" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Total</mat-label>
+    <input matInput name="total" [(ngModel)]="facture.total" type="text" >
+  </mat-form-field>
+  
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button  id="btn" (click)="registerfacture()">Ajouter Transaction</button>
+</div>

@@ -12,16 +12,14 @@ export class ModifierUsineComponent implements OnInit {
   adminImagePath: String;
   ImageUsinePath :String;
   UsineId:any;
+  sideBarOpen=true;
   constructor(private router : Router , private usineService : UsineService ,private activatedRoute: ActivatedRoute) { 
     this.adminImagePath='./assets/images/admin.png';
     this.ImageUsinePath="./assets/images/download.jpg";
     this.selectedUsine=={id:'',nom :'',age:'',typeEgreneuse:'',nbreEgreneuse:'',capacite:'',personnelPermanent:'',personnelSaisonnier:'',personnelOccasionnel:''};
   }
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
   ngOnInit(): void {
          //récupérer l'usine avec l'id passé en param

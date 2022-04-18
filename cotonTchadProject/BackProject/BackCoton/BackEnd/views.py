@@ -19,54 +19,51 @@ from .utils import Util
 from django.conf import settings
 from rest_framework import generics, status, views, permissions
 from rest_framework import permissions
-from BackEnd.Serializers import ResetPasswordEmailRequestSerializer ,vehiculeSerializer,UserSerializer, GroupSerializer ,UtlisateursSerializer , ChauffeurSerializer ,UsinesSerializer
-from BackEnd.Serializers import SetNewPasswordSerializer , BorderauxdelivraisonSerializer ,transactionsSerializer ,DepartmentSerializer
-from .models import vehicules , utilisateurs , chauffeurs, usines , Borderauxdelivraison , transactions
+from BackEnd.Serializers import ResetPasswordEmailRequestSerializer,vehiculeSerializer,UtlisateursSerializer , FacturesProductionApiSerializer,ProduitsApiSerializer , ChauffeurSerializer ,UsinesSerializer
+from BackEnd.Serializers import SetNewPasswordSerializer , ClientsApiSerializer, BorderauxdelivraisonSerializer ,transactionsSerializer ,TransactionsApiSerializer
+from .models import vehicules,facturedeproduction,utilisateurs ,clients, chauffeurs, usines , Borderauxdelivraison , transactions , produits
 
 class vehiculeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = vehicules.objects.all()
+    queryset = vehicules.objects.all().order_by('id')
     serializer_class = vehiculeSerializer
     
 
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
 class UtilisateursViewSet(viewsets.ModelViewSet):
-    queryset= utilisateurs.objects.all()
+    queryset= utilisateurs.objects.all().order_by('id')
     serializer_class = UtlisateursSerializer
+    
+
 
 class ChauffeursViewSet(viewsets.ModelViewSet):
-    queryset = chauffeurs.objects.all()
+    queryset = chauffeurs.objects.all().order_by('id')
     serializer_class = ChauffeurSerializer
 
 class UsinesViewSet(viewsets.ModelViewSet):
-    queryset = usines.objects.all()
+    queryset = usines.objects.all().order_by('id')
     serializer_class = UsinesSerializer
 
 class BorderauxdelivraisonViewSet(viewsets.ModelViewSet):
-    queryset= Borderauxdelivraison.objects.all()
+    queryset= Borderauxdelivraison.objects.all().order_by('id')
     serializer_class = BorderauxdelivraisonSerializer
 
 class transactionsViewSet(viewsets.ModelViewSet):
-    queryset= transactions.objects.all()
+    queryset= transactions.objects.all().order_by('id')
     serializer_class = transactionsSerializer
+    
+
+class produitsViewSet(viewsets.ModelViewSet):
+    queryset= produits.objects.all().order_by('id')
+    serializer_class = ProduitsApiSerializer
+class clientsViewSet(viewsets.ModelViewSet):
+    queryset= clients.objects.all().order_by('id')
+    serializer_class = ClientsApiSerializer
+class factureProductionViewSet(viewsets.ModelViewSet):
+    queryset= facturedeproduction.objects.all().order_by('id')
+    serializer_class = FacturesProductionApiSerializer
 
 class LoginView(APIView):
     def post(self,request):
@@ -91,7 +88,7 @@ class LoginView(APIView):
 
         response = Response()
 
-        response.set_cookie(key='jwt', value=token, httponly=True)
+        response.set_cookie(key='jwt', value=token, httponly=True ,samesite='None', secure=True)
         response.data = {
             'jwt': token
         }
@@ -121,6 +118,7 @@ class LogoutView(APIView):
         response.data = {
             'message': 'success'
         }
+        
         return response
 
 
@@ -198,8 +196,8 @@ class RegisterView(APIView):
         serializer.save()
         return Response(serializer.data)
 
-def departmentApi(request,id=0):
+def transactionsApi(request,id=0):
     if request.method=='GET':
         transactionss=transactions.objects.all()
-        transactionss_serializer=DepartmentSerializer(transactionss,many=True)
+        transactionss_serializer=TransactionsApiSerializer(transactionss,many=True)
         return JsonResponse(transactionss_serializer.data,safe=False)

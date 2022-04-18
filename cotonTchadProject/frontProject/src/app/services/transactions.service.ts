@@ -24,7 +24,10 @@ export class TransactionsService {
     return this.http.get(url,{headers: this.httpHeaders});
   }
   gettransactions(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/departments',{headers: this.httpHeaders});
+    return this.http.get('http://127.0.0.1:8000/transactionsApi',{headers: this.httpHeaders});
+  }
+  getproductrById(url:any): Observable<any> {
+    return this.http.get(url,{headers: this.httpHeaders});
   }
 
 

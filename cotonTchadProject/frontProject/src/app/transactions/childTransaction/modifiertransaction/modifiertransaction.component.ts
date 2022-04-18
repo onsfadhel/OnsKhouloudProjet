@@ -9,12 +9,12 @@ import { TransactionsService } from 'src/app/services/transactions.service';
   styleUrls: ['./modifiertransaction.component.css']
 })
 export class ModifiertransactionComponent implements OnInit {
-  transaction={id:'',transaction:'',codeproduit:'',chauffeur:'',datededepart:'',
+  transaction={id:'',transaction:'',produit_id:'',vehicule_id:'',chauffeur_id:'',datededepart:'',
   adressededepart:'',datearrive:'',adressededestination:'',notes:''};
-  transactions=[{id:'',transaction:'',codeproduit:'',chauffeur:'',datededepart:'',
+  transactions=[{id:'',transaction:'',produit_id:'',vehicule_id:'',chauffeur_id:'',datededepart:'',
   adressededepart:'',datearrive:'',adressededestination:'',notes:''}];
   TransactionId:any;
-  opened=false;
+  sideBarOpen=true;
   responsablelogistiquePath:String;
   constructor(private activatedroute: ActivatedRoute , private transactionservice : TransactionsService, private router: Router, private http : HttpClient) 
   {
@@ -36,12 +36,10 @@ export class ModifiertransactionComponent implements OnInit {
         
       )
   }
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
+
   getTransactions(){
     this.transactionservice.getAlltransactions().subscribe(
       data =>{
@@ -55,8 +53,8 @@ export class ModifiertransactionComponent implements OnInit {
   modifierTransaction= () => {
     let baseurl = "http://127.0.0.1:8000/";
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    const body = {id:this.transaction.id ,transaction:this.transaction.transaction ,codeproduit: this.transaction.codeproduit,
-      chauffeur:this.transaction.chauffeur,datededepart:this.transaction.datededepart,
+    const body = {id:this.transaction.id ,transaction:this.transaction.transaction ,produit_id: this.transaction.produit_id,
+      chauffeur_id:this.transaction.chauffeur_id,vehicule_id:this.transaction.vehicule_id,datededepart:this.transaction.datededepart,
     adressededepart:this.transaction.adressededepart ,datearrive:this.transaction.datearrive,
     adressededestination:this.transaction.adressededestination,notes:this.transaction.notes};
 

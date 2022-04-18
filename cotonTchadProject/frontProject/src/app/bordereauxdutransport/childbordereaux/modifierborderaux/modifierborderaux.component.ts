@@ -14,14 +14,17 @@ export class ModifierborderauxComponent implements OnInit {
   bordereaux=[{id:'',numerobordereau:'',date:'',lieu:'',modalitepaiement:'',
   modalitelivraison:'',datePaie:'', delailivraison:'', observation:'',tauxremise:''}];
   BordereauId:any;
-  opened=false;
+  sideBarOpen=true;
   responsablelogistiquePath:String;
   constructor(private activatedroute: ActivatedRoute , private bordereauservice : BordereauxService, private router:Router, private http :HttpClient) 
   {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getBordereaux();
    }
-
+   sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+   
   ngOnInit(): void {
     let id = parseInt(this.activatedroute.snapshot.params['id']);
     this.BordereauId=id;

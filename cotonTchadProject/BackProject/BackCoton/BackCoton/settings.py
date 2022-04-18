@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'BackEnd',
     'corsheaders',
     'rest_framework_simplejwt',
+    
 ]
 
 MIDDLEWARE = [
@@ -60,8 +61,13 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+MIDDLEWARE_CLASSES = (
+    'django_cookies_samesite.middleware.CookiesSameSite',
+)
 
 ROOT_URLCONF = 'BackCoton.urls'
+
+CORS_ALLOW_CREDENTIALS = True
 
 TEMPLATES = [
     {
@@ -187,7 +193,14 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10 ,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    
+    ),
+   
+   'DEFAULT_PERMISSION_CLASSES': (
+       'rest_framework.permissions.AllowAny',
+    ),
 }
 
 EMAIL_HOST = "smtp.gmail.com"
@@ -195,6 +208,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'te32718@gmail.com' 
 EMAIL_HOST_PASSWORD = '.789.testsenderemail.789.'
 EMAIL_USE_TLS = True
+SESSION_COOKIE_SAMESITE_FORCE_ALL = True
+SESSION_COOKIE_SAMESITE_FORCE_CORE = False
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
+ROOT_URLCONF = 'BackCoton.urls'
 
 #Authentification 
-AUTH_USER_Model = 'BackEnd.User'
+AUTH_USER_Model = 'BackEnd.utilisateurs'

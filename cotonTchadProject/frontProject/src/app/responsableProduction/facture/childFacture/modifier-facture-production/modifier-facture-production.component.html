@@ -1,0 +1,60 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavproduction> </app-sidenavproduction>
+    </mat-sidenav>
+      <mat-sidenav-content> 
+            <div>
+                <h1 mat-dialog-title style="text-align:center;color:#187486;margin-top:30px;">Modifier Les données de facture</h1><br><br>
+                    <div mat-card-content [align]="'center'">
+                        <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Num facture</mat-label>
+                            <input matInput type="text"  name="numfacture" [(ngModel)]="facture.numFacture">
+                          </mat-form-field><br>
+                        
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">produit-id</mat-label>
+                            <input matInput name="produit_id" [(ngModel)]="facture.produit_id" type="text" >
+                          </mat-form-field><br>
+                        
+                        
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Prix Unite</mat-label>
+                            <input matInput name="PrixUnite" type="text" [(ngModel)]="facture.PrixUnite">
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Quantité</mat-label>
+                            <input matInput name="Qte" type="text" [(ngModel)]="facture.Qte">
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Client_Id</mat-label>
+                            <input matInput name="clientId" [(ngModel)]="facture.client_id" type="text" >
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Date de creation</mat-label>
+                            <input matInput name="datedecreation" [(ngModel)]="facture.datedecreation" type="date" >
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="color:green;font-size: 17px;">Total</mat-label>
+                            <input matInput name="total" [(ngModel)]="facture.total" type="text" >
+                          </mat-form-field>
+                        </div><br><br>
+            
+                    <div mat-dialog-action [align]="'center'">
+                    
+                    <button style="margin-left:8px;" mat-raised-button  id="btn" (click)="modifierFacture()" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                          </svg>
+                        Modifier Facture</button>
+                    </div>
+
+             </div>
+            
+      </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+

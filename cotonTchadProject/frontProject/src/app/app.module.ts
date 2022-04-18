@@ -50,8 +50,23 @@ import { BordereauxpdfComponent } from './bordereauxdutransport/childbordereaux/
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { AjoutertransactionComponent } from './transactions/childTransaction/ajoutertransaction/ajoutertransaction.component';
 import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
-import { DefaultModule } from './dashboard/layouts/default/default.module';
-import { HighchartsComponent } from './highcharts/highcharts.component';
+import { HeaderComponent } from './header/header.component';
+import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
+import { DashboardComponent } from './dash/dashboard/dashboard.component';
+import { PiechartComponent } from './dash/charts/piechart/piechart.component';
+import { CardsComponent } from './dash/charts/cards/cards.component';
+import { SidenavproductionComponent } from './responsableProduction/sidenavproduction/sidenavproduction.component';
+import { ProduitsComponent } from './responsableProduction/produits/produits.component';
+import { AjouterproduitComponent } from './responsableProduction/childproduits/ajouterproduit/ajouterproduit.component';
+import { ModifierproduitComponent } from './responsableProduction/childproduits/modifierproduit/modifierproduit.component';
+import { ClientsComponent } from './responsableProduction/clients/clients/clients.component';
+import { AjouterclientComponent } from './responsableProduction/clients/childClients/ajouterclient/ajouterclient.component';
+import { ModifierClientComponent } from './responsableProduction/clients/childClients/modifier-client/modifier-client.component';
+import { FactureProductionComponent } from './responsableProduction/facture/facture-production/facture-production.component';
+import { AjouterFactureProductionComponent } from './responsableProduction/facture/childFacture/ajouter-facture-production/ajouter-facture-production.component';
+import { ModifierFactureProductionComponent } from './responsableProduction/facture/childFacture/modifier-facture-production/modifier-facture-production.component';
+import { SidenavbaradminComponent } from './administrateur/sidenavbaradmin/sidenavbaradmin.component';
+import { DownloadFactureProductionComponent } from './responsableProduction/facture/childFacture/download-facture-production/download-facture-production.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +92,23 @@ import { HighchartsComponent } from './highcharts/highcharts.component';
     TransactionsComponent,
     AjoutertransactionComponent,
     ModifiertransactionComponent,
-    HighchartsComponent,
+    HeaderComponent,
+    SidenavbarComponent,
+    DashboardComponent,
+    PiechartComponent,
+    CardsComponent,
+    SidenavproductionComponent,
+    ProduitsComponent,
+    AjouterproduitComponent,
+    ModifierproduitComponent,
+    ClientsComponent,
+    AjouterclientComponent,
+    ModifierClientComponent,
+    FactureProductionComponent,
+    AjouterFactureProductionComponent,
+    ModifierFactureProductionComponent,
+    SidenavbaradminComponent,
+    DownloadFactureProductionComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,7 +139,6 @@ import { HighchartsComponent } from './highcharts/highcharts.component';
     MatIconModule,
     AngularSplitModule,
     FormsModule,
-    DefaultModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]

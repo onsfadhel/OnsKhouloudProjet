@@ -1,0 +1,22 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavbar> </app-sidenavbar>
+    </mat-sidenav>
+        <mat-sidenav-content> 
+            <div>
+                <div style="width:1300px;margin-left:20px" >
+                    <app-cards></app-cards>
+                </div>
+                <br><br>
+                <mat-divider></mat-divider>
+                <br><br>
+                <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" style="width:1300px;margin-left:450px">
+                    <div >
+                        <app-piechart></app-piechart>
+                    </div>
+                </div>
+             </div>
+            
+        </mat-sidenav-content>
+    </mat-sidenav-container>

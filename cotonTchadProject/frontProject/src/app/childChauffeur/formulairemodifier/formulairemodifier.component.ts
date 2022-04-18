@@ -9,7 +9,7 @@ import { HttpClient , HttpHeaders } from '@angular/common/http';
 })
 export class FormulairemodifierComponent implements OnInit {
   responsablelogistiquePath : String;
-  opened=false;
+  sideBarOpen=true;
   filetoUpload: any=null;
   chauffeurImage:any;
   chauffeurId:any;
@@ -33,12 +33,6 @@ export class FormulairemodifierComponent implements OnInit {
     reader.readAsDataURL(this.filetoUpload);
   }
 
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
-  }
 
   ngOnInit(): void {
      //récupérer le chauffeur avec l'id passé en param
@@ -56,6 +50,9 @@ export class FormulairemodifierComponent implements OnInit {
          
        )
 
+  }
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
   getChauffeurs = () => {

@@ -85,3 +85,8 @@ mat-sidenav-container{
     font-weight: bold;
     
 }
+.logo-icon{
+    height: 280px;
+    width: 300px;
+    margin-bottom: 20px;
+}

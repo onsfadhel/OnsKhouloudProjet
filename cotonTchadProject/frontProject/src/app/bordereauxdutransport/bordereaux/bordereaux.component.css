@@ -25,17 +25,15 @@ mat-sidenav-container{
     
 }
 
-.vehiculetable{
-    margin-top: 20px;
-    padding-left: 50px;
-}
+
 #buttonvehicule{
-    margin-left:800px;
-    width:210px;
+    margin-left:50px;
+    width:220px;
     height:50px;
     background-color:#159397;
     color:white;
-    font-size:16px;
+    border-radius: 0.6rem;
+    font-size:17px;
     font-weight: bold;
     font-family:cursive;
     margin-top: -140px;
@@ -70,4 +68,32 @@ mat-sidenav-container{
     font-family:cursive;
     font-weight: bold;
     
+}
+.logo-icon{
+    height: 280px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+.tablebordereaux {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top:40%;
+    left:50%;
+    border-radius: 2em;
+    border-collapse: collapse;
+    
+    box-shadow: 2px 2px 12px rgba(0, 0, 0,0.2), -1px -1px 8px rgba(0, 0, 0,0.2) ;
+}
+tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+
+}
+th,td{
+    padding:12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+tr:hover{
+    background-color: #c6ecc6;
 }

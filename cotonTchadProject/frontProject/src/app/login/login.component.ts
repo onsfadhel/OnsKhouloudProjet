@@ -4,6 +4,7 @@ import { LoginService} from 'src/app/services/login.service';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { getMatInputUnsupportedTypeError } from '@angular/material/input';
+import { keys } from 'highcharts';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,16 +15,18 @@ export class LoginComponent implements OnInit {
   user={id:'',nom:'',prenom:'',email:'',password:'',téléphone:'',adresse:'',role:''};
   msgerreur="";
   utilisateurs=[{id:'',nom:'',prenom:'',email:'',password:'',téléphone:'',adresse:'',role:''}];
+  response=""
   public roles:string[];
   public loggedUser:any;
   form: any;
   public isloggedIn: Boolean = false;
-  
+  list:any;
   constructor(private router:Router, private loginservice: LoginService ,private formBuilder: FormBuilder ,private http : HttpClient) {
     this.loggedUser;
     this.isloggedIn;
     this.getusers();
     this.roles=[];
+    console.log(this.list);
    }
 
 
@@ -53,11 +56,12 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.http.post('http://127.0.0.1:8000/login', this.form.getRawValue(), {
-      withCredentials: true
-    }).subscribe(
+    this.http.post('http://127.0.0.1:8000/login', this.form.getRawValue(), { withCredentials: true }).subscribe(
       Response=>{
-        
+        this.list=Response;
+        const jwt= this.list.jwt;
+        localStorage.setItem('jwt',jwt);
+
         let role = this.getUserRoles(this.user.email);
         if(role=="responsable logistique"){
           this.router.navigate(['/vehicule']);
@@ -65,11 +69,15 @@ export class LoginComponent implements OnInit {
         if(role=="admin"){
           this.router.navigate(['/admin/utilisateurs']);
         }
+        if(role=="responsable de production"){
+          this.router.navigate(['/responsableDeProduction']);
+        }
         else{
           this.msgerreur="Vous n'avez pas encore l'accés à notre plateforme";
         }
         /*this.router.navigate(['/vehicule']);*/ 
-      },error =>{
+      },
+      error =>{
         this.msgerreur="Veuillez vérifier votre email et votre mot de passe"
       }
     );

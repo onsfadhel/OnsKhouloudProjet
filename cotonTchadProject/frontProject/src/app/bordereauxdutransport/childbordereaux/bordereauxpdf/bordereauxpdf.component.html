@@ -1,69 +1,79 @@
-<div class="container-fluid">
-    <section class="text-right mt-3">
-      <button class="btn btn-warning" (click)="makepdf()">Télécharger en pdf</button>
-    </section>
-    <div class="card-body content" id="content" #content>
-        <h2 style="color:#06a86d;">CotonTchad SN</h2>
-        <div class="dropdown-divider"></div><br>
-        <p>Adresse : bp.1116,N'djamena,Tchad</p>
-        <p >Téléphone : 22 51 66 79</p>
-        <p >Email : cotontchad@gmail.com</p>
-        <p style="margin-left:350px">Date : <input type="text" name="total" name="date" [(ngModel)]="bordereau.date"></p>
-        <br><br>
-        <table class="table" style="width:520px;">
-            <thead class="bg-success" style="color:white;">
-              <tr>
-                <th scope="col">N du bordereau</th>
-                <th scope="col">Délai Livraison</th>
-                <th scope="col">Observation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" name="total" name="numero" [(ngModel)]="bordereau.numerobordereau"></td>
-                <td><input type="text" name="total" name="delailivraison" [(ngModel)]="bordereau.delailivraison"></td>
-                <td><input type="text" name="total" name="numero" [(ngModel)]="bordereau.numerobordereau"></td>
-              </tr>
-            </tbody>
-        </table>
-        <br><br>
-        <table class="table" style="width:520px;">
-            <thead class="bg-success" style="color:white;">
-              <tr>
-                <th scope="col">Item</th>
-                <th scope="col">Description</th>
-                <th scope="col">Quantité</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-              </tr>
-              <tr>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-              </tr>
-              <tr>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-              </tr>
-              <tr>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-                <td><input type="text" name="total"></td>
-              </tr>
-            </tbody>
-        </table>
-        <br>
-        <div style="margin-left:320px;">Total : <input type="text" name="total"></div><br>
-        <p>Signature : </p><br>
-        <p>Date Paie : &nbsp;<input type="text" name="Date Paie" [(ngModel)]="bordereau.datePaie"></p><br>
-        <div class="dropdown-divider"></div><br>
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavbar> </app-sidenavbar>
+    </mat-sidenav>
+        <mat-sidenav-content> 
+            <div>
+                  <div class="container-fluid">
+                    <section class="text-right mt-3">
+                      <button class="btn btn-warning" (click)="makepdf()">Télécharger en pdf</button>
+                    </section>
+                    <div class="card-body content" id="content" #content>
+                        <h2 style="color:#06a86d;">CotonTchad SN</h2>
+                        <div class="dropdown-divider"></div><br>
+                        <p>Adresse : bp.1116,N'djamena,Tchad</p>
+                        <p >Téléphone : 22 51 66 79</p>
+                        <p >Email : cotontchad@gmail.com</p>
+                        <p style="margin-left:350px">Date : <input type="text" name="total" name="date" [(ngModel)]="bordereau.date"></p>
+                        <br><br>
+                        <table class="table" style="width:520px;">
+                            <thead class="bg-success" style="color:white;">
+                              <tr>
+                                <th scope="col">N du bordereau</th>
+                                <th scope="col">Délai Livraison</th>
+                                <th scope="col">Observation</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" name="total" name="numero" [(ngModel)]="bordereau.numerobordereau"></td>
+                                <td><input type="text" name="total" name="delailivraison" [(ngModel)]="bordereau.delailivraison"></td>
+                                <td><input type="text" name="total" name="numero" [(ngModel)]="bordereau.numerobordereau"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table class="table" style="width:520px;">
+                            <thead class="bg-success" style="color:white;">
+                              <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Quantité</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                              </tr>
+                              <tr>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                              </tr>
+                              <tr>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                              </tr>
+                              <tr>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                                <td><input type="text" name="total"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div style="margin-left:320px;">Total : <input type="text" name="total"></div><br>
+                        <p>Signature : </p><br>
+                        <p>Date Paie : &nbsp;<input type="text" name="Date Paie" [(ngModel)]="bordereau.datePaie"></p><br>
+                        <div class="dropdown-divider"></div><br>
 
 
-    </div>
-  </div>
+                  </div>
+                </div>
+              </div>
+            </mat-sidenav-content>
+  </mat-sidenav-container>

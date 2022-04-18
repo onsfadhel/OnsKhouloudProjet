@@ -16,6 +16,7 @@ export class BordereauxComponent implements OnInit {
   bordereaux=[{id:'',numerobordereau:'',date:'',lieu:'',modalitepaiement:'',
   modalitelivraison:'',datePaie:'', delailivraison:'', observation:'',tauxremise:''}];
   opened=false;
+  sideBarOpen=true;
   responsablelogistiquePath : String;
   constructor(private router:Router , private dialog : MatDialog, private bordereauservice :BordereauxService, private http : HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
@@ -23,6 +24,9 @@ export class BordereauxComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
   logout() { 
     let isloggedIn: Boolean = false;

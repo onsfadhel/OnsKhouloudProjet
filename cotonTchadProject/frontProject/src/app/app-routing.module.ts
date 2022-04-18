@@ -13,11 +13,17 @@ import { FormulaireajouterComponent } from './childChauffeur/formulaireajouter/f
 import { FormulairemodifierComponent } from './childChauffeur/formulairemodifier/formulairemodifier.component';
 import { FormulairemodificationComponent } from './childVehicule/formulairemodification/formulairemodification.component';
 import { FormulairevehiculeComponent } from './childVehicule/formulairevehicule/formulairevehicule.component';
-import { DefaultComponent } from './dashboard/layouts/default/default.component';
-import { DashboardComponent } from './dashboard/modules/dashboard/dashboard.component';
+import { DashboardComponent } from './dash/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ResetemailComponent } from './resetemail/resetemail.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ModifierproduitComponent } from './responsableProduction/childproduits/modifierproduit/modifierproduit.component';
+import { ModifierClientComponent } from './responsableProduction/clients/childClients/modifier-client/modifier-client.component';
+import { ClientsComponent } from './responsableProduction/clients/clients/clients.component';
+import { DownloadFactureProductionComponent } from './responsableProduction/facture/childFacture/download-facture-production/download-facture-production.component';
+import { ModifierFactureProductionComponent } from './responsableProduction/facture/childFacture/modifier-facture-production/modifier-facture-production.component';
+import { FactureProductionComponent } from './responsableProduction/facture/facture-production/facture-production.component';
+import { ProduitsComponent } from './responsableProduction/produits/produits.component';
 import { ModifiertransactionComponent } from './transactions/childTransaction/modifiertransaction/modifiertransaction.component';
 import { TransactionsComponent } from './transactions/transactions/transactions.component';
 import { VehiculecontentComponent } from './vehiculecontent/vehiculecontent.component';
@@ -43,9 +49,15 @@ const routes: Routes = [
   {path:'pdf/:id',component:BordereauxpdfComponent},
   {path:'transactions',component:TransactionsComponent},
   {path:'modifierTransaction/:id',component:ModifiertransactionComponent},
-  {path:'dashboard',component: DefaultComponent,children:[{path:'dashboardlogistique',component:DashboardComponent}]},
   {path:'highcharts', component: HighchartsChartComponent},
-
+  {path:'dashboardLogistique',component: DashboardComponent},
+  {path:'responsableDeProduction', component:ProduitsComponent},
+  {path:'modifierproduit/:id', component:ModifierproduitComponent},
+  {path:'clients',component: ClientsComponent},
+  {path:'modifierclient/:id',component: ModifierClientComponent},
+  {path: 'facturesProduction', component: FactureProductionComponent},
+  {path:'modifierfactureProduction/:id',component:ModifierFactureProductionComponent},
+  {path:'downloadFactureProduction/:id',component: DownloadFactureProductionComponent},
 ];
 
 @NgModule({

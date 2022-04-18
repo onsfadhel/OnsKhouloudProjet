@@ -12,7 +12,7 @@ import { error } from '@angular/compiler/src/util';
 })
 export class FormulairevehiculeComponent implements OnInit {
   register:any;
-  vehicule={ matricule: ' ',types:' ',poid: ' ',chauffeur :' ',vitesse :' ',freinage :' ',consommation: ' '};
+  vehicule={ matricule: ' ',types:' ',marque:'',poid: ' ',vitesse :' ',freinage :' ',consommation: ' '};
   constructor(private http: HttpClient, private router:Router) {}
   
   ngOnInit(): void {

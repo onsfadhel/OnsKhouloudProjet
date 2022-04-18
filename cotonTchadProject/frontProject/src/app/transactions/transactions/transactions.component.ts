@@ -6,33 +6,38 @@ import { ChauffeurComponent } from 'src/app/chauffeur/chauffeur.component';
 import { FormulaireajouterComponent } from 'src/app/childChauffeur/formulaireajouter/formulaireajouter.component';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { AjoutertransactionComponent } from '../childTransaction/ajoutertransaction/ajoutertransaction.component';
-
+import { Emitters } from 'src/app/Emitters/emitters';
+import { ProduitsService } from 'src/app/services/produits.service';
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.css']
 })
 export class TransactionsComponent implements OnInit {
-  transactions = [{id:'',transaction:'',codeproduit:'',chauffeur:{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''} ,
-  datededepart:'',
-  adressededepart:'',datearrive:'',adressededestination:'',notes:''}];
+  transactions = [{id:'',transaction:'',produit_id:'',chauffeur_id:'',vehicule_id:'',datededepart:'',adressededepart:'',datearrive:'',adressededestination:'',notes:'',reference:'',nom_chauffeur:''}];
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  chauffeur ={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
-  opened=false;
+  sideBarOpen=true;
+  reference:any;
+  namechauffeur:any;
+  authenticated=false;
   responsablelogistiquePath :String;
-  constructor(private router:Router , private dialog : MatDialog , private transactionservice : TransactionsService, private http: HttpClient) {
+
+  constructor(private router:Router , private dialog : MatDialog , private transactionservice : TransactionsService, private http: HttpClient,private productService: ProduitsService) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
+    
     this.getTransactions();
-    this.getChauffeur();
+  
    }
 
   ngOnInit(): void {
+    Emitters.authEmitter.subscribe(
+      (auth: boolean) => {
+        this.authenticated = auth;
+      }
+    );
   }
-  logout() { 
-    let isloggedIn: Boolean = false;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn',String(isloggedIn));
-    this.router.navigate(['/login']);
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
   openDialog() {
     this.dialog.open(AjoutertransactionComponent, {
@@ -42,7 +47,27 @@ export class TransactionsComponent implements OnInit {
   getTransactions(){
     this.transactionservice.getAlltransactions().subscribe(
       data=>{
-        this.transactions= data.results;        
+        this.transactions= data.results; 
+        this.transactions.forEach((transac)=>{
+          this.transactionservice.getproductrById("http://127.0.0.1:8000/produits/"+transac.produit_id+"/").subscribe(
+            data =>{
+              transac.reference=data.reference;
+              
+            },error=>{
+              console.log(error);
+            })
+          });
+          this.transactions.forEach((transac)=>{
+            this.transactionservice.getChauffeurById("http://127.0.0.1:8000/chauffeurs/"+transac.chauffeur_id+"/").subscribe(
+              data =>{
+                transac.nom_chauffeur=data.nom +' '+ data.prenom;
+  
+              },error=>{
+                console.log(error);
+              })
+            });
+
+            
       },
       error =>{
         console.log(error);
@@ -61,25 +86,7 @@ export class TransactionsComponent implements OnInit {
   gomodify(transaction : any){
     this.router.navigate(['/modifierTransaction',transaction.id]);
     }
-  //méthode pour remplir transactions[chauffeurs ] selon url
-  getChauffeur(){
-    this.transactionservice.getAlltransactions().subscribe(
-    data=>{
-      this.transactions= data.results; 
-      this.transactions.forEach((transac)=>{
-        this.transactionservice.getChauffeurById(transac.chauffeur).subscribe(
-          data =>{
-            transac.chauffeur=data;
-          }, error=>{
-            console.log(error);
-          }
-        );
-      })       
-    },
-    error =>{
-      console.log(error);
-    });
-  }
+
 
 
 }

@@ -2,6 +2,8 @@ import { Injectable  } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable ,BehaviorSubject } from 'rxjs';
 import { FormGroup, AbstractControl } from "@angular/forms";
+import { CookieService } from 'ngx-cookie-service';
+const TOKEN_Key ='auth-token'
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class LoginService {
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   public roles:string[];
   trouve:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient , private cookie : CookieService) { 
     this.roles=[];
   }
   get isLoggedIn() {
@@ -26,6 +28,9 @@ export class LoginService {
   }
   changePassword(model: any) {
     return this.http.post(this.baseurl + 'change-password/', model ,{headers: this.httpHeaders});
+  }
+  public gettoken(): string{
+    return this.cookie.get(TOKEN_Key);
   }
   getUserRoles(user:any){ 
     let users=this.getAllUsers();   

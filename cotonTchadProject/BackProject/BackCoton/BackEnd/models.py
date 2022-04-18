@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser
 class vehicules(models.Model):
     matricule=models.CharField( max_length=50)
     types=models.CharField(max_length=50)
+    marque=models.CharField(max_length=100,blank=True, null=True)
     poid=models.CharField(max_length=50)
-    chauffeur=models.CharField( max_length=50)
     vitesse=models.IntegerField()
     freinage=models.CharField( max_length=50)
     consommation=models.CharField( max_length=50)
@@ -61,10 +61,38 @@ class Borderauxdelivraison(models.Model):
 
 class transactions(models.Model):
     transaction=models.CharField(max_length=50)
-    codeproduit=models.IntegerField()
+    produit=models.ForeignKey("produits", on_delete=models.CASCADE ,blank=True, null=True )
     chauffeur=models.ForeignKey("chauffeurs", on_delete=models.CASCADE ,blank=True, null=True )
+    vehicule=models.ForeignKey("vehicules", on_delete=models.CASCADE ,blank=True, null=True )
     datededepart=models.DateField(auto_now=False, auto_now_add=False)
     adressededepart=models.CharField(max_length=50)
     datearrive=models.DateField(auto_now=False, auto_now_add=False)
     adressededestination=models.CharField(max_length=50)
     notes=models.CharField(max_length=50)
+
+
+
+class clients(models.Model):
+    nom=models.CharField(max_length=50)
+    prenom=models.CharField(max_length=50)
+    adresse=models.CharField(max_length=50)
+    pays=models.CharField(max_length=50)
+    phone=PhoneNumberField()
+    dateDeCommande=models.DateField(auto_now=False, auto_now_add=False)
+class produits(models.Model):
+    reference = models.CharField(max_length=50)
+    categorie = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
+    prix_de_vente = models.FloatField()
+    quantite = models.CharField(max_length=50)
+    emplacement=models.ForeignKey("usines", on_delete=models.CASCADE ,blank=True, null=True )
+    image = models.ImageField(upload_to='pictures', height_field=None, width_field=None, max_length=None,blank=True, null=True )
+
+class facturedeproduction(models.Model):
+    numFacture=models.IntegerField(unique=True)
+    produit=models.ForeignKey("produits", on_delete=models.CASCADE)
+    PrixUnite=models.FloatField()
+    Qte=models.IntegerField()
+    client=models.ForeignKey("clients",on_delete=models.CASCADE)
+    datedecreation=models.DateField( auto_now=False, auto_now_add=False,blank=True,null=True)
+    total=models.IntegerField()

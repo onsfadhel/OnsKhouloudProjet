@@ -1,0 +1,34 @@
+<h1 mat-dialog-title style="text-align:center;">Remplir le formulaire</h1><br>
+<div mat-card-content >
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Nom</mat-label>
+    <input matInput type="text"  name="nom" [(ngModel)]="client.nom">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prénom</mat-label>
+    <input matInput name="prenom" [(ngModel)]="client.prenom" type="text" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Adresse</mat-label>
+    <input matInput name="adresse" type="text" [(ngModel)]="client.adresse">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">N téléphone</mat-label>
+    <input matInput name="phone" type="phone" [(ngModel)]="client.phone">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Pays</mat-label>
+    <input matInput name="pays" type="text" [(ngModel)]="client.pays">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">date de départ</mat-label>
+    <input matInput name="dateDeCommande" [(ngModel)]="client.dateDeCommande" type="date" >
+  </mat-form-field>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button  id="btn" (click)="registerclient()">Ajouter Client</button>
+</div>

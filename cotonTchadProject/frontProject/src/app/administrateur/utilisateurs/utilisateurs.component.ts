@@ -12,6 +12,7 @@ import { HttpClient , HttpHeaders } from '@angular/common/http';
 export class UtilisateursComponent implements OnInit {
   utilisateurs=[{id:'',nom:'',prenom:'',email:'',password:'',phone:'',adresse:'',role:''}];
   adminImagePath:String;
+  sideBarOpen=true;
 
   constructor(private router: Router , private usersservice: UsersService,private dialog: MatDialog , private http :HttpClient) {
     this.adminImagePath='./assets/images/admin.png';
@@ -57,6 +58,9 @@ export class UtilisateursComponent implements OnInit {
   //modifier utilisateur guider vers utilisateur 
   modifUtilisateur(utilisateur:any){
     this.router.navigate(['admin/utilisateur/modifier',utilisateur.id]);
+  }
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
 
