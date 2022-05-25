@@ -11,13 +11,13 @@ export class BordereauxService {
 
   constructor(private http : HttpClient) { }
   getAllBordereaux(): Observable<any> {
-    return this.http.get(this.baseurl + 'bordereauxlivraison/',{headers: this.httpHeaders});
+    return this.http.get(this.baseurl + 'bordereauxtransport/',{headers: this.httpHeaders});
   }
   ajouterBordereau(bordereau:any):Observable<any>{
-    return this.http.post(this.baseurl + 'bordereauxlivraison/',bordereau,{headers: this.httpHeaders});
+    return this.http.post(this.baseurl + 'bordereauxtransport/',bordereau,{headers: this.httpHeaders});
   }
   getBordereauById(id:any): Observable<any> {
-    return this.http.get(this.baseurl + 'bordereauxlivraison/' + id + '/',
+    return this.http.get(this.baseurl + 'bordereauxtransport/' + id + '/',
     {headers: this.httpHeaders});
   }
 

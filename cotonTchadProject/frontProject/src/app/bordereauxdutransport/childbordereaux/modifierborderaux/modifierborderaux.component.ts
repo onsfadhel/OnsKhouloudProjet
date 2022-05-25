@@ -63,7 +63,7 @@ export class ModifierborderauxComponent implements OnInit {
     modalitelivraison:this.bordereau.modalitelivraison ,datePaie:this.bordereau.datePaie,
      delailivraison: this.bordereau.delailivraison, observation: this.bordereau.observation,tauxremise:this.bordereau.tauxremise}; ;
 
-    this.http.put( baseurl+ 'bordereauxlivraison/' + this.bordereau.id + '/',body,{headers: httpHeaders}).subscribe(
+    this.http.put( baseurl+ 'bordereauxtransport/' + this.bordereau.id + '/',body,{headers: httpHeaders}).subscribe(
       data=> {
         this.getBordereaux();
         alert("votre Bordereau est modifié ");

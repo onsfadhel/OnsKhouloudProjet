@@ -62,7 +62,7 @@ export class BordereauxComponent implements OnInit {
   }
   deleteBordereau(bordereauId : any){
     let baseurl = "http://127.0.0.1:8000/";
-    this.http.delete(baseurl + 'bordereauxlivraison/'+bordereauId+ '/').subscribe(
+    this.http.delete(baseurl + 'bordereauxtransport/'+bordereauId+ '/').subscribe(
       response=>{
         this.getBordereaux();
 
