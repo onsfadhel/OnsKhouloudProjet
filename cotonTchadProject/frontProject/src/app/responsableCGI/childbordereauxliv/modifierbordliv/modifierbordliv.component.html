@@ -1,0 +1,68 @@
+<app-headercgi (toggleSideBarForMe)="sideBarToggler()"></app-headercgi>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavcgi> </app-sidenavcgi>
+    </mat-sidenav>
+    
+  <mat-sidenav-content> 
+  
+  <br><br>
+  <br><br>
+  <h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier Bordereau</h1><br>
+    <div mat-card-content>
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">N° Bordereau</mat-label>
+        <input matInput type="texte"  name="num" [(ngModel)]="selectedBordli.num">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Date </mat-label>
+        <input matInput name="date" [(ngModel)]="selectedBordli.date" type="date">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Designation</mat-label>
+        <input matInput type="texte"  name="designation" [(ngModel)]="selectedBordli.designation">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Quantite </mat-label>
+        <input matInput name="qte" [(ngModel)]="selectedBordli.qte" type="number" >
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Modalite Livraison </mat-label>
+        <input matInput type="texte"  name="model_liv" [(ngModel)]="selectedBordli.model_liv"  placeholder="Envoi Économique / Envoi Rapide">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Modalite Livraison </mat-label>
+        <input matInput type="texte"  name="model_paie" [(ngModel)]="selectedBordli.model_paie" placeholder="Virement Bancaire / Carte Crédit">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Date Paiement</mat-label>
+        <input matInput name="date" [(ngModel)]="selectedBordli.date_paie" type="date">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label style="font-size:18px;">Date Livraison </mat-label>
+        <input matInput name="date" [(ngModel)]="selectedBordli.date_liv" type="date">
+      </mat-form-field>
+
+
+    </div>
+    <div mat-dialog-action style="text-align:center;" >
+    <button  mat-raised-button  id="btn" (click)="updateBordli()" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+      Modifier le Bordereau</button>
+    </div>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

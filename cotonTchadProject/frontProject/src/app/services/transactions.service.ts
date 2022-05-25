@@ -29,6 +29,9 @@ export class TransactionsService {
   getproductrById(url:any): Observable<any> {
     return this.http.get(url,{headers: this.httpHeaders});
   }
+  getVehicules(): Observable<any>{
+    return this.http.get('http://127.0.0.1:8000/vehiculesApi',{headers: this.httpHeaders})
+  }
 
 
 

@@ -1,0 +1,14 @@
+<app-headerfinancier (toggleSideBarForMe)="sideBarToggler()"></app-headerfinancier>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavfinancier> </app-sidenavfinancier>
+    </mat-sidenav>
+        <mat-sidenav-content> 
+            <div style="width:1350px;margin-left:10px">
+                <app-stackareafinancier></app-stackareafinancier>
+            </div>
+            <div style="width:1300px;margin-left:20px">
+                <app-piechartfinancier></app-piechartfinancier>
+            </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

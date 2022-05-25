@@ -45,7 +45,7 @@ export class CardsComponent implements OnInit {
               title: {
                   text: 'Logistique Data'
               },
-              colors:['#4794fa',' #ac3973','#d580ff','#ff99ff','#ff8080','#ffa64d','#1affb2',,'#ff8080'],
+              colors:['#10815A','#35B549','#17A87A','#35A1B5','#4775D1','#4935B5','#8935B5','#B535AF',,'#B5356F'],
               subtitle: {
                   text: 'Nombre de transactions pour chaque adresse de destination'
               },

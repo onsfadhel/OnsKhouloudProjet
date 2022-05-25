@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'BackEnd',
     'corsheaders',
     'rest_framework_simplejwt',
+    'django_twilio',
     
 ]
 
@@ -213,6 +214,8 @@ SESSION_COOKIE_SAMESITE_FORCE_CORE = False
 SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 ROOT_URLCONF = 'BackCoton.urls'
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 
 #Authentification 
 AUTH_USER_Model = 'BackEnd.utilisateurs'

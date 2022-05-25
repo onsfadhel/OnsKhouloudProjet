@@ -16,6 +16,8 @@ export class VehiculecontentComponent implements OnInit {
   utilisateur={id:'',nom:'',prenom:'',email:'',password:'',phone:'',adresse:'',role:''};
   responsablelogistiquePath : String;
   username:any;
+  p:number=1;
+  categorie:any;
   sideBarOpen=true;
   authenticated = false;
    constructor(private http: HttpClient,private api: VehiculeService,private router: Router,private dialog: MatDialog) {
@@ -23,6 +25,15 @@ export class VehiculecontentComponent implements OnInit {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     
    }
+   search(){
+    if(this.categorie == ""){
+      this.getVehicules;
+    }else{
+      this.vehicules = this.vehicules.filter(res =>{
+        return res.types.toLocaleLowerCase().match(this.categorie.toLocaleLowerCase());
+      })
+    }
+  }
    sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }

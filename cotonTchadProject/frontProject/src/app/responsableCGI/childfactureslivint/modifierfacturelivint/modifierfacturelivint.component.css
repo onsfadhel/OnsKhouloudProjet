@@ -1,0 +1,159 @@
+mat-form-field{
+    width :80%;
+    margin-left:20px;
+    margin-right:60px;
+  }
+  #btn{
+    height: 55px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #187486;
+  
+  }
+  mat-form-field{
+    width :80%;
+    margin-left:20px;
+    margin-right:60px;
+  }
+  #btn{
+    height: 55px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #187486;
+    
+}
+
+  
+.toolbar{
+  color:white;
+  font-size:22px;
+  font-family:cursive;
+}    
+.matlist{
+  color:black;
+  font-size:18px;
+  font-family:cursive;
+  font-weight: bold;
+  
+}
+.logo-icon{
+  height: 280px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.btn{
+  background-image: linear-gradient(to right, rgb(2, 83, 38), #38d39f, #38d39f);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  height: 60px;
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  width: 350px;
+  transition: .5s;
+  box-sizing: border-box;
+}
+.btnalign{
+  text-align: center;
+}
+  
+mat-sidenav-container{
+  height: 760px;
+}
+mat-sidenav{
+  width: 350px;
+  background-image: linear-gradient(to bottom, rgb(2, 83, 38), #027a52, #38d39f);
+  border-color: white;
+
+}
+
+mat-list-item{
+  margin-top: 30px;
+}
+.icon-menu{
+  color: white;
+}
+.bar-menu{
+  background-color: #035225;
+  height: 70px;
+
+}
+
+.toolbar{
+  color:rgb(255, 255, 255);
+  font-size:22px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.matlist{
+  color:black;
+  font-size:18px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+mat-list mat-list-item{
+
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  height: 55px;
+
+
+}
+mat-list mat-list-item:hover{
+  background-color: white;
+
+}
+
+mat-list mat-list-item a{
+  position: relative;
+  display:block;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+mat-list mat-list-item:hover a{
+  color: #037048;
+
+}
+
+mat-list mat-list-item:hover a::before{
+content: '';
+position: absolute;
+margin-left: 285px;
+top: -65px;
+width: 50px;
+height: 50px;
+background: transparent;
+border-radius: 50%;
+box-shadow:35px 35px 0 8px white ;
+pointer-events: none;
+}
+
+mat-list mat-list-item:hover a::after{
+  content: '';
+  position: absolute;
+  margin-left: 285px;
+  bottom: -65px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow:35px -35px 0 8px white ;
+}
+  .bar-menu{
+  background-color: #06a86d;
+  }
+  
+  .toolbar{
+  color:white;
+  font-size:22px;
+  font-family:cursive;
+  }
+
+  

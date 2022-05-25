@@ -1,0 +1,77 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    
+  <mat-sidenav-content style="margin-left:100px;"> 
+    <h1 mat-dialog-title ><b>Modifier mon profile</b></h1>
+    <div class="dropdown-divider" style="width:1400px"></div>
+    <br><br>
+    <img [src]="IconUserPath" id="IconUser" width="180" height="180">
+    <div mat-card-content class="form">
+        <h2><b>Informations personnelles</b></h2>
+        <div class="dropdown-divider" style="width:900px"></div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Nom: </b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input  type="text" style="width:300px;height:40px;"  name="nom" [(ngModel)]="selectedUser.nom">
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b> Prénom: </b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:300px;height:40px;" name="prenom" [(ngModel)]="selectedUser.prenom" type="text">
+            
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Role</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col-auto">
+                <mat-select name="type" class="custom-select" id="inputGroupSelect01" [(ngModel)]="selectedUser.role">
+                    <mat-option selected>{{selectedUser.role}}</mat-option>
+                    <mat-option value="administrateur">Administrateur</mat-option>
+                    <mat-option value="gestionnaire logistique">gestionnaire logistique</mat-option>
+                    <mat-option value="responsable financier">responsable financier</mat-option>
+                   
+                    <mat-option value="responsable de pont bascule">responsable de pont bascule</mat-option>
+                    <mat-option value="responsable CGI">responsable CGI</mat-option>
+                    <mat-option value="responsable de production">responsable de production</mat-option>
+                    <mat-option value="cozoc">cozoc</mat-option>
+                </mat-select>
+
+            </div>
+        </div>  <br> <br> <br>
+        <h2><b>Contact</b></h2>
+        <div class="dropdown-divider" style="width:900px"></div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Email:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="col-auto">
+                <input style="width:300px;height:40px;" name="email" [(ngModel)]="selectedUser.email" type="Email">
+            </div>
+        </div>  <br>
+    
+
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputphone" class="col-form-label"><h3><b>N du téléphone:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <div class="col-auto">
+                <input style="width:300px;height:40px;" name="phone" [(ngModel)]="selectedUser.phone" type="phone">
+            </div>
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Adresse:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;  
+            <div class="col-auto">
+                <input style="width:300px;height:40px;"  name="adresse" [(ngModel)]="selectedUser.adresse" type="text">
+            </div>
+                </div>  <br>
+    </div>
+    <div mat-dialog-action [align]="'center'">
+        <button mat-raised-button  type="submit" class=" btn" (click)="modifieruser(selectedUser)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+        </svg>&nbsp;Modifier Mon profile</button>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

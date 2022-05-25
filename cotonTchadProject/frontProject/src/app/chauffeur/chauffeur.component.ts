@@ -12,13 +12,16 @@ import { HttpClient } from '@angular/common/http';
 export class ChauffeurComponent implements OnInit {
   sideBarOpen=true;
   responsablelogistiquePath:String;
+  nom:any;
+  p:number=1;
   chauffeurs=[{id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''}];
   chauffeur={id: '',photo: '',nom:'',prenom: '',Birthday: '',phone: '',adresse: '',permis: '',salaire: ''};
   constructor(private router:Router , private chauffeurservice: ChauffeurService, private dialog: MatDialog ,private http:HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getChauffeurs();
-    
   }
+
+
   onSelect(chauffeur:any){
     this.router.navigate(['/modifierChauffeur',chauffeur.id]);
   }
@@ -54,7 +57,15 @@ export class ChauffeurComponent implements OnInit {
         });
       
     }
-
+    search(){
+      if(this.nom == ""){
+        this.getChauffeurs();
+      }else{
+        this.chauffeurs = this.chauffeurs.filter(res =>{
+          return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+        })
+      }
+    }
 
   ngOnInit(): void {
   }

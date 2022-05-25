@@ -1,0 +1,63 @@
+<app-headercgi (toggleSideBarForMe)="sideBarToggler()"></app-headercgi>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavcgi> </app-sidenavcgi>
+    </mat-sidenav>
+        <mat-sidenav-content> 
+            <div>
+                  <div class="container-fluid">
+                    <section class="text-right mt-3">
+                      <button class="btn btn-warning" (click)="makepdf()">Télécharger en pdf</button>
+                    </section>
+                    <div class="card-body content" id="content" #content>
+                        <h2 style="color:#06a86d;">CotonTchad SN</h2>
+                        <div class="dropdown-divider"></div><br>
+                        <p>Adresse : bp.1116,N'djamena,Tchad</p>
+                        <p >Téléphone : 22 51 66 79</p>
+                        <p >Email : cotontchad@gmail.com</p>
+                        <p style="margin-left:350px">Date : <input type="text" name="total" name="date" [(ngModel)]="factli.date"></p>
+                        <br>
+                        <table class="table" style="width:420px;">
+                                <thead class="bg-success" style="color:white;">
+                                  <tr>
+                                    <th scope="col">Numéro de facture</th>
+                                    <th scope="col">Echeance</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><input type="text" name="total" [(ngModel)]="factli.numfact"></td>
+                                    <td><input type="text" name="total" [(ngModel)]="factli.echeance"></td>
+                                    
+                                  </tr>
+                                  
+                                </tbody>
+                            </table>
+                        <br>
+                        <table class="table" style="width:470px;">
+                            <thead class="bg-success" style="color:white;">
+                              <tr>
+                                <th scope="col">Intrant</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Prix unitaire</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><input type="text" name="total" [(ngModel)]="factli.intrant"></td>
+                                <td><input type="text" name="total" [(ngModel)]="factli.qte"></td>
+                                <td><input type="text" name="total" [(ngModel)]="factli.prixunitaire"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-left:500px;">
+                            <p>Prix Total: &nbsp;<input type="text" name="date_paie" [(ngModel)]="factli.prixtotal"> </p>
+                        </div>
+                        <p>Signature : </p><br>
+                    
+                        <div class="dropdown-divider"></div><br>
+                  </div>
+                </div>
+              </div>
+            </mat-sidenav-content>
+  </mat-sidenav-container>

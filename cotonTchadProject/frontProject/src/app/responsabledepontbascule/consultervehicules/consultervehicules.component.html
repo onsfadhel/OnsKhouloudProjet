@@ -1,0 +1,48 @@
+<app-headerpontbascule (toggleSideBarForMe)="sideBarToggler()"></app-headerpontbascule>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavpontbascule> </app-sidenavpontbascule>
+    </mat-sidenav>
+  <mat-sidenav-content>
+    
+    <div>
+      <div style="overflow-x: auto;">
+        <table class="table" style="width:1200px;" >
+              <thead style="background-color:#06a86d;color:white">
+                  <tr>
+                    <th scope="col" class="styleheader">Id</th>
+                    <th scope="col" class="styleheader">Matricule</th>
+                    <th scope="col"class="styleheader">Catégorie</th>
+                    <th scope="col"class="styleheader">Marque</th>
+                    <th scope="col" class="styleheader">Poid</th>
+                    <th scope="col" class="styleheader">Vitesse</th>
+                    <th scope="col" class="styleheader">Freinage</th>
+                    <th scope="col" class="styleheader">Consommation Carbonat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vehicule of vehicules | paginate:{itemsPerPage:4,currentPage:p}">
+                    <td scope="row">
+                      {{vehicule.id}}
+                    </td>
+                    <td>
+                      {{vehicule.matricule}}
+                    </td>
+                    <td>{{vehicule.types}}</td>
+                    <td>{{vehicule.marque}}</td>
+                    <td>{{vehicule.poid}}</td>
+                    <td>{{vehicule.vitesse}}</td>
+                    <td>{{vehicule.freinage}}</td>
+                    <td>{{vehicule.consommation}}</td>
+                  </tr>
+                </tbody>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </table>
+          
+      </div>
+   </div>
+      
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

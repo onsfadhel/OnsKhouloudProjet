@@ -1,0 +1,50 @@
+<h1 mat-dialog-title style="text-align:center;">Formulaire pour besoin</h1><br>
+<div mat-card-content>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Code Demande Besoin</mat-label>
+    <input matInput type="text"  name="code" [(ngModel)]="besoin.code">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Code AV </mat-label>
+    <input matInput name="nom_AV" [(ngModel)]="besoin.code_AV" type="text" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Nom Article</mat-label>
+    <mat-select name="type" [(ngModel)]="besoin.nom_artc" id="inlineFormCustomSelect">
+      <mat-option value="Nitrogene">Nitrogéne</mat-option>
+      <mat-option value="Potasium">Potasium</mat-option>
+      <mat-option value="Phosphore">Phosphore</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Quantité </mat-label>
+    <input matInput name="qte" [(ngModel)]="besoin.qte" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Unité</mat-label>
+    <mat-select name="type" [(ngModel)]="besoin.unite"  id="inlineFormCustomSelect">
+      <mat-option value="kg">Kg</mat-option>
+      <mat-option value="tonnes">Tonnes</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Date </mat-label>
+    <input matInput name="date" [(ngModel)]="besoin.date" type="date" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Écheance</mat-label>
+    <input matInput name="echeance" [(ngModel)]="besoin.echeance" type="date" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix </mat-label>
+    <input matInput name="prix" [(ngModel)]="besoin.prix" type="number" class="form-control">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button (click)="registerbesoin()" id="btn" >Sauvegarder</button>
+</div>

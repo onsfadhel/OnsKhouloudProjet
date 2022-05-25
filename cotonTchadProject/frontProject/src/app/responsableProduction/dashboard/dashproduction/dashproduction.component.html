@@ -1,0 +1,14 @@
+<app-headerproduction (toggleSideBarForMe)="sideBarToggler()"></app-headerproduction>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavproduction> </app-sidenavproduction>
+    </mat-sidenav>
+        <mat-sidenav-content> 
+            <div style="width:1350px;margin-left:10px">
+                <app-stackedarea></app-stackedarea>
+            </div>
+            <div style="width:1300px;margin-left:20px">
+                <app-barchartdash></app-barchartdash>
+            </div>
+        </mat-sidenav-content>
+</mat-sidenav-container>

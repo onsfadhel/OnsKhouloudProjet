@@ -1,0 +1,57 @@
+<app-headerfinancier (toggleSideBarForMe)="sideBarToggler()"></app-headerfinancier>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavfinancier> </app-sidenavfinancier>
+    </mat-sidenav>
+      <mat-sidenav-content> 
+            <div>
+                <h1 mat-dialog-title style="text-align:center;color:#187486;margin-top:30px;">Modifier les informations du Produit</h1><br><br>
+                <img [src]="produit.image" name="photo" width="200" height="200" name="image"  style="margin-left:50px;margin-top:100px;">
+                    <div mat-card-content [align]="'center'" style="margin-top:-250px;">
+                        <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Réference</mat-label>
+                            <input matInput type="text"  name="refernece" [(ngModel)]="produit.reference">
+                          </mat-form-field><br>
+                        
+                          <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Catégorie</mat-label>
+                            <input matInput name="categorie" [(ngModel)]="produit.categorie" type="text" >
+                          </mat-form-field><br>
+                        
+                        
+                          <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Description</mat-label>
+                            <input matInput name="Description" type="text" [(ngModel)]="produit.description">
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Prix De Vente</mat-label>
+                            <input matInput name="prixDeVente" type="phone" [(ngModel)]="produit.prix_de_vente">
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Quantité</mat-label>
+                            <input matInput name="quantite" type="text" [(ngModel)]="produit.quantite">
+                          </mat-form-field><br>
+                          <mat-form-field appearance="outline">
+                            <mat-label style="font-size:16px;">Mois</mat-label>
+                            <input matInput name="mois" [(ngModel)]="produit.mois" type="text" >
+                          </mat-form-field>
+                        </div><br><br>
+            
+                    <div mat-dialog-action [align]="'center'">
+                    
+                    <button style="margin-left:8px;" mat-raised-button  class="btn" (click)="modifierProduit()" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                          </svg>
+                        Modifier Produit</button>
+                    </div>
+
+             </div>
+            
+      </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+

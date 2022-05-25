@@ -13,11 +13,22 @@ export class UtilisateursComponent implements OnInit {
   utilisateurs=[{id:'',nom:'',prenom:'',email:'',password:'',phone:'',adresse:'',role:''}];
   adminImagePath:String;
   sideBarOpen=true;
+  p:number=1;
+  nom:any;
 
   constructor(private router: Router , private usersservice: UsersService,private dialog: MatDialog , private http :HttpClient) {
     this.adminImagePath='./assets/images/admin.png';
     this.getAllusers();
    }
+  search(){
+    if (this.nom == ""){
+      this.getAllusers();
+    }else{
+      this.utilisateurs= this.utilisateurs.filter(res =>{
+        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase())
+      })
+    }
+  }
 
   ngOnInit(): void {
   }

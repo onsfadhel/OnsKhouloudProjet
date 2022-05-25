@@ -14,7 +14,9 @@ export class UsinesComponent implements OnInit {
   adminImagePath:String;
   authentificated=false;
   username: string | undefined;
+  nom:any;
   sideBarOpen=true;
+  p:number=1;
   usines=[{id:'',nom :'',age:'',typeEgreneuse:'',nbreEgreneuse:'',capacite:'',personnelPermanent:'',personnelSaisonnier:'',personnelOccasionnel:''}]
   constructor(private router: Router , private usineService : UsineService , private dialog : MatDialog, private http: HttpClient) {
     this.adminImagePath='./assets/images/admin.png';
@@ -22,6 +24,15 @@ export class UsinesComponent implements OnInit {
    }
    sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
+  }
+  search(){
+    if (this.nom == ""){
+      this.getUsines();
+    }else{
+      this.usines=this.usines.filter(res =>{
+        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+      })
+    }
   }
 
   ngOnInit(): void {

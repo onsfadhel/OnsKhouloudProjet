@@ -21,6 +21,8 @@ export class TransactionsComponent implements OnInit {
   namechauffeur:any;
   authenticated=false;
   responsablelogistiquePath :String;
+  transaction:any;
+  p:number=1;
 
   constructor(private router:Router , private dialog : MatDialog , private transactionservice : TransactionsService, private http: HttpClient,private productService: ProduitsService) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
@@ -85,7 +87,17 @@ export class TransactionsComponent implements OnInit {
     }
   gomodify(transaction : any){
     this.router.navigate(['/modifierTransaction',transaction.id]);
+  }
+  //chercher par type de transaction
+  search(){
+    if(this.transaction == ""){
+      this.getTransactions();
+    }else{
+      this.transactions = this.transactions.filter(res =>{
+        return res.transaction.toLocaleLowerCase().match(this.transaction.toLocaleLowerCase());
+      })
     }
+  }
 
 
 

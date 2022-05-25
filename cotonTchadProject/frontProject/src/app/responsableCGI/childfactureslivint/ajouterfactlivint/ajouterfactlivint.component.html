@@ -1,0 +1,57 @@
+<h1 mat-dialog-title style="text-align:center;">Creation Facture livraison</h1><br>
+<div mat-card-content>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">N° Factuture</mat-label>
+    <input matInput type="text"  name="num" [(ngModel)]="factli.numfact">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Date </mat-label>
+    <input matInput name="fate" [(ngModel)]="factli.date" type="date" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:20px;">Intrant</mat-label>
+    <input matInput type="text"  name="designation" [(ngModel)]="factli.intrant">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Quantite </mat-label>
+    <input matInput name="qte" [(ngModel)]="factli.qte" type="number" class="form-control">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix Unitaire </mat-label>
+    <input matInput name="qte" [(ngModel)]="factli.prixunitaire" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix Total </mat-label>
+    <input matInput name="qte" [(ngModel)]="factli.prixtotal" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Modalité Livraison</mat-label>
+    <mat-select name="type" [(ngModel)]="factli.modal_liv"  id="inlineFormCustomSelect">
+      <mat-option value="Envoi Économique">envoi économique  >2-3jrs </mat-option>
+      <mat-option value="Envoi Rapide">envoi rapide  >24-48h </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Date Echeance </mat-label>
+    <input matInput name="date_paie" [(ngModel)]="factli.echeance" type="date" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Observation </mat-label>
+    <input matInput name="date_liv" [(ngModel)]="factli.observation" type="text" >
+  </mat-form-field>
+
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button (click)="registerfactli()" id="btn" >Ajouter Facture</button>
+</div>
+
+
+

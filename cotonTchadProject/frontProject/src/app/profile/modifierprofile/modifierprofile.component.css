@@ -1,0 +1,95 @@
+mat-form-field{
+    width :100%;
+  }
+  #btn{
+    width:230px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #187486;
+}
+#btn2{
+    height: 42px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #4E3C89;
+}
+.form {
+    
+    padding-left: 360px;
+    margin-top:-120px ;
+}
+#IconUser{
+    margin-left: 100px;
+}
+mat-sidenav-container{
+    height: 765px;
+    }
+    
+    .bar-menu{
+    background-color: #06a86d;
+    }
+    
+.toolbar{
+    color:white;
+    font-size:22px;
+    font-family:cursive;
+}    
+h1{
+    margin-left: 80px;
+    margin-top: 20px;
+    color:#156567;
+}
+
+mat-sidenav-container{
+    height: 765px;
+    }
+    mat-sidenav{
+        width: 280px;
+        background-color: #3A393C;
+    }
+    .icon-menu{
+        color: #3A393C;
+    }
+    .bar-menu{
+    background-color: #06a86d;
+    }
+    
+.toolbar{
+    color:white;
+    font-size:22px;
+    font-family:cursive;
+}    
+#button{
+    margin-left:90px;
+    width:220px;
+    height:45px;
+    background-color:#159397;
+    color:white;
+    font-size:16px;
+    font-weight: bold;
+    font-family:cursive;
+    margin-top: -140px;
+}
+.btn{
+    background-image: linear-gradient(to right, rgb(2, 83, 38), #38d39f, #38d39f);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    height: 60px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    cursor: pointer;
+    width: 350px;
+    transition: .5s;
+    box-sizing: border-box;
+}
+.btnalign{
+    text-align: center;
+}

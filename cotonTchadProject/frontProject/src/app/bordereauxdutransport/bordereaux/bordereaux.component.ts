@@ -16,12 +16,23 @@ export class BordereauxComponent implements OnInit {
   bordereaux=[{id:'',numerobordereau:'',date:'',lieu:'',modalitepaiement:'',
   modalitelivraison:'',datePaie:'', delailivraison:'', observation:'',tauxremise:''}];
   opened=false;
+  p:number=1;
+  date:any;
   sideBarOpen=true;
   responsablelogistiquePath : String;
   constructor(private router:Router , private dialog : MatDialog, private bordereauservice :BordereauxService, private http : HttpClient) {
     this.responsablelogistiquePath='./assets/images/responsablelogistique.png';
     this.getBordereaux();
    }
+  search(){
+    if(this.date == ""){
+      this.getBordereaux();
+    }else{
+      this.bordereaux = this.bordereaux.filter(res =>{
+        return res.delailivraison.match(this.date.toLocaleLowerCase());
+      })
+    }
+  }
 
   ngOnInit(): void {
   }

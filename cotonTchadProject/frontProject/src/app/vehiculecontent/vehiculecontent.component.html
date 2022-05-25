@@ -1,4 +1,4 @@
-<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<app-headerlogistique (toggleSideBarForMe)="sideBarToggler()"></app-headerlogistique>
 <mat-sidenav-container>
     <mat-sidenav mode="side" [opened]="sideBarOpen">
         <app-sidenavbar> </app-sidenavbar>
@@ -9,16 +9,16 @@
       <div class="vehiculetable" style="margin-top:30px;" >
         <div>
           <form class="form-inline my-2 my-lg-0" style="margin-left:900px;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width:250px;">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" name="categorie"  type="search" placeholder="Entrer categorie du véhicule" 
+            aria-label="Search" style="width:250px;" [(ngModel)]="categorie">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()">Search</button>
           </form>
-          <button (click)="openDialog()" type="button" class="btn" id="buttonvehicule"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-          </svg>&nbsp;Ajouter Véhicule </button>
+          <button  type="button" class="button" id="buttonbesoin" style="vertical-align:middle" (click)=" openDialog()">
+            <mat-icon class="add">queue</mat-icon><span>&nbsp;&nbsp;&nbsp;&nbsp;Ajouter véhicule</span></button>
           
         </div>
-          <table class="tablevehicule" style="margin-left:40px;margin-top:40px;background-color:white;width:1000px;">
+        <div style="overflow-x: auto;">
+          <table class="table" style="width:1200px;" >
               <thead style="background-color:#06a86d;color:white">
                   <tr>
                     <th scope="col" class="styleheader">Id</th>
@@ -33,7 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let vehicule of vehicules">
+                  <tr *ngFor="let vehicule of vehicules | paginate:{itemsPerPage:4,currentPage:p}">
                     <td scope="row">
                       {{vehicule.id}}
                     </td>
@@ -58,12 +58,12 @@
                     </div></td>
                   </tr>
                 </tbody>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </table>
-          
+        </div>
       </div>
    </div>
-  
-      
+   
   </mat-sidenav-content>
 </mat-sidenav-container>
 

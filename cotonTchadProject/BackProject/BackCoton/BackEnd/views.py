@@ -5,6 +5,9 @@ from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnico
 from django.contrib.auth.hashers import check_password
 from rest_framework.response import Response
 import jwt , datetime
+#sms twilio
+import os
+from twilio.rest import Client
 from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
@@ -19,9 +22,9 @@ from .utils import Util
 from django.conf import settings
 from rest_framework import generics, status, views, permissions
 from rest_framework import permissions
-from BackEnd.Serializers import ResetPasswordEmailRequestSerializer,vehiculeSerializer,UtlisateursSerializer , FacturesProductionApiSerializer,ProduitsApiSerializer , ChauffeurSerializer ,UsinesSerializer
-from BackEnd.Serializers import SetNewPasswordSerializer , ClientsApiSerializer, BorderauxdelivraisonSerializer ,transactionsSerializer ,TransactionsApiSerializer
-from .models import vehicules,facturedeproduction,utilisateurs ,clients, chauffeurs, usines , Borderauxdelivraison , transactions , produits
+from BackEnd.Serializers import ticketdepeseSerializer,stockcotonSerializer,bordlivintrantSerializer,facturelivraisonintrantSerializer, besoinSerializer ,ResponsableDeProductionSerializer, ResponsableCGISerializer, ResponsableFinancierSerializer, administrateurSerializer, stockSerializer, VehiculesApiSerializer,ResetPasswordEmailRequestSerializer,vehiculeSerializer,UtlisateursSerializer , FacturesProductionApiSerializer,ProduitsApiSerializer , ChauffeurSerializer ,UsinesSerializer
+from BackEnd.Serializers import CozocSerializer,facturecotonSerializer, StockApiSerializer, ResponsableDePontBaculeSerializer, ResponsableLogistiqueSerializer, ProduitsApiSerializer, CodeSerializer, SetNewPasswordSerializer , ClientsApiSerializer, BorderauxdelivraisonSerializer ,transactionsSerializer ,TransactionsApiSerializer
+from .models import ResponsableDeProduction,facturelivraisonintrant,stockcoton, ticketdepese,bordereauxlivraisonintrant, facturecoton, besoins, Cozoc, ResponsableDePontBacule, stock, ResponsableCGI, Administrateur, ResponsableFinancier, ResponsableLogistique, vehicules,facturedeproduction,utilisateurs ,clients,Code, chauffeurs, usines , Borderauxdelivraison , transactions , produits
 
 class vehiculeViewSet(viewsets.ModelViewSet):
     """
@@ -36,8 +39,33 @@ class UtilisateursViewSet(viewsets.ModelViewSet):
     queryset= utilisateurs.objects.all().order_by('id')
     serializer_class = UtlisateursSerializer
     
+class AdministrateurViewSet(viewsets.ModelViewSet):
+    queryset= Administrateur.objects.all().order_by('id')
+    serializer_class = administrateurSerializer
 
+class ResponsableLogistiqueViewSet(viewsets.ModelViewSet):
+    queryset= ResponsableLogistique.objects.all().order_by('id')
+    serializer_class = ResponsableLogistiqueSerializer
 
+class ResponsableFinancierViewSet(viewsets.ModelViewSet):
+    queryset= ResponsableFinancier.objects.all().order_by('id')
+    serializer_class = ResponsableFinancierSerializer
+
+class ResponsableDeProductionViewSet(viewsets.ModelViewSet):
+    queryset= ResponsableDeProduction.objects.all().order_by('id')
+    serializer_class = ResponsableDeProductionSerializer
+
+class ResponsableCGIViewSet(viewsets.ModelViewSet):
+    queryset= ResponsableCGI.objects.all().order_by('id')
+    serializer_class = ResponsableCGISerializer
+
+class ResponsableDePontBaculeViewSet(viewsets.ModelViewSet):
+    queryset= ResponsableDePontBacule.objects.all().order_by('id')
+    serializer_class = ResponsableDePontBaculeSerializer
+
+class CozocViewSet(viewsets.ModelViewSet):
+    queryset= Cozoc.objects.all().order_by('id')
+    serializer_class = CozocSerializer
 class ChauffeursViewSet(viewsets.ModelViewSet):
     queryset = chauffeurs.objects.all().order_by('id')
     serializer_class = ChauffeurSerializer
@@ -50,10 +78,23 @@ class BorderauxdelivraisonViewSet(viewsets.ModelViewSet):
     queryset= Borderauxdelivraison.objects.all().order_by('id')
     serializer_class = BorderauxdelivraisonSerializer
 
+class stockcotonViewSet(viewsets.ModelViewSet):
+    queryset=stockcoton.objects.all().order_by('id')
+    serializer_class= stockcotonSerializer
+
+class facturecotonViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = facturecoton.objects.all()
+    serializer_class = facturecotonSerializer
 class transactionsViewSet(viewsets.ModelViewSet):
     queryset= transactions.objects.all().order_by('id')
     serializer_class = transactionsSerializer
-    
+
+class stockViewSet(viewsets.ModelViewSet):
+    queryset=stock.objects.all().order_by('id')
+    serializer_class=StockApiSerializer   
 
 class produitsViewSet(viewsets.ModelViewSet):
     queryset= produits.objects.all().order_by('id')
@@ -64,6 +105,71 @@ class clientsViewSet(viewsets.ModelViewSet):
 class factureProductionViewSet(viewsets.ModelViewSet):
     queryset= facturedeproduction.objects.all().order_by('id')
     serializer_class = FacturesProductionApiSerializer
+class ticketdepeseViewSet(viewsets.ModelViewSet):
+    queryset= ticketdepese.objects.all().order_by('id')
+    serializer_class = ticketdepeseSerializer
+class besoinViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = besoins.objects.all()
+    serializer_class = besoinSerializer
+class bordereauxliViewSet(viewsets.ModelViewSet):
+    queryset = bordereauxlivraisonintrant.objects.all()
+    serializer_class = bordlivintrantSerializer
+class facturelivraisonintrantViewSet(viewsets.ModelViewSet):
+    queryset=facturelivraisonintrant.objects.all()
+    serializer_class=facturelivraisonintrantSerializer
+class envoiesms(APIView):
+    
+    def post(self,request):
+        response=Response()
+        #token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6OSwiZXhwIjoxNjUwNDIwMDg5LCJpYXQiOjE2NTA0MTY0ODl9.wV7O2-a80l208sPGWndxUdLxVbzzhtvWdATsTRJx7GU"
+        token=request.COOKIES.get('jwt')
+        decoded=jwt.decode(token, 'secret', algorithm=['HS256'])
+        
+
+        userid=decoded['id']
+        utilisateur=utilisateurs.objects.filter(id=userid).first()
+        code= Code.objects.filter(user=utilisateur).first()
+        client = Client("ACab325c21c3d473795ade3ac2327109ff", "f4998829a2fed0b2bc32c8fc0b234316" )
+        message = client.messages.create(
+            to= str(code.user.phone), 
+            from_="+19705949157", # insert trial number 
+            body="Your CotonTchad verification Codes is : "+code.number) 
+        response.data = {
+            'message': 'succés'
+        }
+        return response
+
+class CodePhone(generics.GenericAPIView):
+    serializer_class =CodeSerializer
+    def post(self,request):
+        token = request.COOKIES.get('jwt')
+        
+        try:
+            payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated!')
+        
+        utilisateur=utilisateurs.objects.filter(id=payload['id']).first()
+        serializer = UtlisateursSerializer(utilisateur)
+        code= Code.objects.get(user=utilisateur)
+        codenumber = code.number
+        code_user = f"{code.user.email}: {codenumber}"
+        response=Response()
+        print(code.user.phone)
+            
+        #send sms
+        number = request.data.get('number')
+        if str(codenumber)== number : 
+            code.save()
+        
+            response.data ="succés"
+        else :
+            response.data ="veuillez vérifiez votre code"
+        return response
+
 
 class LoginView(APIView):
     def post(self,request):
@@ -123,8 +229,10 @@ class LogoutView(APIView):
 
 
 
+
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailRequestSerializer
+
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -201,3 +309,21 @@ def transactionsApi(request,id=0):
         transactionss=transactions.objects.all()
         transactionss_serializer=TransactionsApiSerializer(transactionss,many=True)
         return JsonResponse(transactionss_serializer.data,safe=False)
+def vehiculesApi(request,id=0):
+    if request.method=='GET':
+        vehiculess= vehicules.objects.all()
+        vehicules_serializer=VehiculesApiSerializer(vehiculess,many=True)
+        return JsonResponse(vehicules_serializer.data,safe=False)
+
+def produitsApi(request,id=0):
+    if request.method=='GET':
+        produitss= produits.objects.all().order_by('mois')
+        produits_serialize=ProduitsApiSerializer(produitss,many=True)
+        return JsonResponse(produits_serialize.data,safe=False)
+def stockProduitsApi(request,id=0):
+    if request.method=='GET':
+        stockproduits=stock.objects.all().order_by('mois')
+        stockproduit_serializer=stockSerializer(stockproduits,many=True)
+        return JsonResponse(stockproduit_serializer.data,safe=False)
+
+

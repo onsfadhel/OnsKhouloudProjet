@@ -63,7 +63,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('jwt',jwt);
 
         let role = this.getUserRoles(this.user.email);
-        if(role=="responsable logistique"){
+        this.router.navigate(['/codeconnexion']);
+        /*if(role=="responsable logistique"){
           this.router.navigate(['/vehicule']);
         }
         if(role=="admin"){
@@ -74,7 +75,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           this.msgerreur="Vous n'avez pas encore l'accés à notre plateforme";
-        }
+        }*/
         /*this.router.navigate(['/vehicule']);*/ 
       },
       error =>{

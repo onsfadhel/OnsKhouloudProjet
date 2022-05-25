@@ -30,4 +30,7 @@ export class VehiculeService {
     return this.http.put(this.baseurl + 'vehicules/' + vehicule.id + '/', body,
     {headers: this.httpHeaders});
   }
+  getVehicules(): Observable<any>{
+    return this.http.get('http://127.0.0.1:8000/vehiculesApi/',{headers: this.httpHeaders})
+  }
 }

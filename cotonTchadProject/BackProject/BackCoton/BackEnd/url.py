@@ -5,5 +5,8 @@ from django.urls import path, include
 from . import views
  
 urlpatterns = [
-    path('transactionsApi',views.transactionsApi)
+    path('transactionsApi',views.transactionsApi),
+    path('vehiculesApi',views.vehiculesApi),
+    path('venteProduitApi',views.produitsApi),
+    path('stockproduitss',views.stockProduitsApi),
 ]

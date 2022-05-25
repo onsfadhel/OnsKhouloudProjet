@@ -1,0 +1,56 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavcozoc> </app-sidenavcozoc>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <br><br>
+  <mat-card class="example-card" >
+    <mat-card-header>
+    <h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier lae stock coton</h1><br>
+  </mat-card-header>
+    <div mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Reference coton</mat-label>
+            <input matInput type="text"  name="code" [(ngModel)]="coton.referencecoton">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;"> Entre </mat-label>
+            <input matInput name="entre" [(ngModel)]="coton.entre" type="text" >
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Sortie</mat-label>
+            <input matInput name="sortie" [(ngModel)]="coton.sortie" type="text" >
+            
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Association villageoise </mat-label>
+            <input matInput name="qte" [(ngModel)]="coton.av" type="text" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Id usine</mat-label>
+                <input matInput name="qte" [(ngModel)]="coton.usine_id" type="number" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:20px;">Mois </mat-label>
+            <input matInput name="date" [(ngModel)]="coton.mois" type="number" class="form-control">
+          </mat-form-field>
+
+    </div>
+    <div mat-dialog-action style="text-align:center;" >
+    <button  mat-raised-button  id="btn" (click)="updatecoton()" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+      Modifier Stock</button>
+    </div>
+</mat-card>
+
+</mat-sidenav-content>
+  <video  autoplay loop id="myVideo">
+    <source src="assets/images/coton7.mp4" type="video/mp4">
+  </video>
+</mat-sidenav-container>

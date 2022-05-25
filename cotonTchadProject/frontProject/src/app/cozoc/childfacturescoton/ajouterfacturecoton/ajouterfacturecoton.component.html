@@ -1,0 +1,46 @@
+<h1 mat-dialog-title style="text-align:center;">Formulaire pour facture</h1><br>
+<div mat-card-content>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Numero de facture </mat-label>
+    <input matInput type="text"  name="num" [(ngModel)]="facture.num" placeholder="exemple #fa58">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Date </mat-label>
+    <input matInput name="fate" [(ngModel)]="facture.date" type="date" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Quantité </mat-label>
+    <input matInput name="qte" [(ngModel)]="facture.qte" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Unité</mat-label>
+    <mat-select name="type" [(ngModel)]="facture.unite"  id="inlineFormCustomSelect">
+      <mat-option value="kg">Kg</mat-option>
+      <mat-option value="tonnes">Tonnes</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix Unitaire</mat-label>
+    <input matInput name="prixUnitaire" [(ngModel)]="facture.prixUnitaire" type="number" class="form-control">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Prix Total</mat-label>
+    <input matInput name="prixTotal" [(ngModel)]="facture.prixTotal" type="number" class="form-control">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:16px;">Nom Assoct° Villageoise</mat-label>
+    <input matInput name="nom_AV" [(ngModel)]="facture.nom_AV" type="text" class="form-control">
+  </mat-form-field>
+
+
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button (click)="registerfacture()" id="btn" >Ajouter Facture</button>
+</div>
+
+

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import vehicules , chauffeurs ,transactions , produits , clients 
-from .models import utilisateurs , usines ,Borderauxdelivraison , facturedeproduction
+from .models import Code, vehicules,facturelivraisonintrant, ticketdepese , bordereauxlivraisonintrant,  besoins, facturecoton, chauffeurs ,transactions , Cozoc, produits , clients ,stock, Administrateur, ResponsableLogistique, ResponsableCGI
+from .models import utilisateurs , usines ,Borderauxdelivraison ,stockcoton, facturedeproduction, ResponsableFinancier, ResponsableDeProduction, ResponsableDePontBacule
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str , smart_bytes , DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_decode 
@@ -36,15 +36,58 @@ class UtlisateursSerializer(serializers.HyperlinkedModelSerializer):
         instance.save()
         return instance
 
+class administrateurSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= Administrateur
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+class ResponsableLogistiqueSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= ResponsableLogistique
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+class ResponsableFinancierSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= ResponsableFinancier
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+class ResponsableDeProductionSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= ResponsableDeProduction
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+class ResponsableCGISerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= ResponsableCGI
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+
+class ResponsableDePontBaculeSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= ResponsableDePontBacule
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+
+class CozocSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model= Cozoc
+        fields = ['id','nom','prenom','email','password','phone','adresse','role']
+
 class ChauffeurSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model= chauffeurs
         fields= ['photo','id','nom','prenom','Birthday','phone','adresse','permis','salaire']
+class facturecotonSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = facturecoton
+        fields = ['id','num', 'date', 'qte','unite', 'prixUnitaire','prixTotal','nom_AV']
+
+class bordlivintrantSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = bordereauxlivraisonintrant
+        fields=['id','num','date','designation','qte','model_liv','model_paie','date_paie','date_liv']
+class facturelivraisonintrantSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = facturelivraisonintrant
+        fields=['id','numfact','date','intrant','qte','prixunitaire','prixtotal','modal_liv','echeance','observation']
 class ProduitsApiSerializer(serializers.ModelSerializer):
-    emplacement_id=serializers.PrimaryKeyRelatedField(queryset=usines.objects.all(),source='emplacement',many=False)
     class Meta:
         model = produits
-        fields = ['id','reference','categorie','description','prix_de_vente','quantite','emplacement_id','image']
+        fields = ['id','reference','categorie','description','prix_de_vente','quantite','image','mois']
         def to_representation(self, instance):
             representation = dict()
             representation["id"] = instance.id
@@ -52,6 +95,12 @@ class ProduitsApiSerializer(serializers.ModelSerializer):
             representation["categorie"] = instance.categorie
             representation["quantity"] = instance.quantity
 
+class StockApiSerializer(serializers.ModelSerializer):
+    emplacement_id=serializers.PrimaryKeyRelatedField(queryset=usines.objects.all(),source='emplacement',many=False)
+    class Meta:
+        model = stock
+        fields = ['id','reference','categorie','description','entre','sortie','emplacement_id','image','mois']
+        
 class UsinesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta : 
         model= usines
@@ -61,7 +110,11 @@ class BorderauxdelivraisonSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Borderauxdelivraison
         fields=['id','numerobordereau','date','lieu','modalitepaiement','modalitelivraison','datePaie','delailivraison','observation','tauxremise']
-
+class ticketdepeseSerializer(serializers.HyperlinkedModelSerializer):
+    vehicule_id=serializers.PrimaryKeyRelatedField(queryset=vehicules.objects.all(),source='vehicule',many=False)
+    class Meta:
+        model = ticketdepese
+        fields=['id','numeroticket','caisse','vehicule_id','date','dateP1','dateP2','peseur','poidP1','poidP2','observation']
 class transactionsSerializer(serializers.HyperlinkedModelSerializer):
     
     produit_id=serializers.PrimaryKeyRelatedField(queryset=produits.objects.all(),source='produit',many=False)
@@ -71,6 +124,10 @@ class transactionsSerializer(serializers.HyperlinkedModelSerializer):
         model= transactions
         fields=['id','transaction','produit_id','chauffeur_id','vehicule_id','datededepart','adressededepart','datearrive','adressededestination','notes']
 
+class besoinSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = besoins
+        fields = ['id','code', 'code_AV', 'nom_artc', 'qte','unite','date','echeance','prix']
 
 class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(min_length=2)
@@ -80,12 +137,32 @@ class ResetPasswordEmailRequestSerializer(serializers.Serializer):
     class Meta:
         fields = ['email']
 
+
+class CodeSerializer(serializers.Serializer):
+    number=serializers.CharField(label='Code',help_text="Enter SMs verification code")
+    class Meta:
+        model = Code
+        fields=['number']
+class stockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = stock
+        fields = ['id','reference','categorie','description','entre','sortie','emplacement_id','image','mois']
+
+class stockcotonSerializer(serializers.ModelSerializer):
+    usine_id=serializers.PrimaryKeyRelatedField(queryset=usines.objects.all(),source='usine',many=False)
+    class Meta:
+        model=stockcoton
+        fields=['id','referencecoton','entre','sortie','av','usine_id','mois']      
+
 class TransactionsApiSerializer(serializers.ModelSerializer):
     class Meta:
         model=transactions
         fields=['id','transaction','produit_id','chauffeur_id','datededepart','adressededepart','datearrive','adressededestination','notes']
     
-
+class VehiculesApiSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = vehicules
+        fields = ['id','matricule', 'types','marque', 'poid','vitesse','freinage','consommation']
 
 class ClientsApiSerializer(serializers.ModelSerializer):
     class Meta :

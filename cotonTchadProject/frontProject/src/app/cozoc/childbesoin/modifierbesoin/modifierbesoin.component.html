@@ -1,0 +1,64 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavcozoc> </app-sidenavcozoc>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <br><br>
+  <mat-card class="example-card" >
+    <mat-card-header>
+    <h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier la demande des besoins</h1><br>
+  </mat-card-header>
+    <div mat-card-content>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Code Demande Besoin</mat-label>
+        <input matInput type="text"  name="code" [(ngModel)]="selectedBesoin.code">
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Code AV</mat-label>
+        <input matInput name="nom_AV" [(ngModel)]="selectedBesoin.code_AV" type="text" >
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Nom Article </mat-label>
+        <input matInput name="nom_artc" [(ngModel)]="selectedBesoin.nom_artc" type="text"  >
+      </mat-form-field>
+
+
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Quantite </mat-label>
+        <input matInput name="qte" [(ngModel)]="selectedBesoin.qte" type="number" >
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Unite </mat-label>
+        <input matInput name="unite" [(ngModel)]="selectedBesoin.unite" type="text">
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Date </mat-label>
+        <input matInput name="date" [(ngModel)]="selectedBesoin.date" type="date">
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Écheance</mat-label>
+        <input matInput name="echeance"  [(ngModel)]="selectedBesoin.echeance" type="date">
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label style="font-size:18px;">Prix Total </mat-label>
+        <input matInput name="Prix" [(ngModel)]="selectedBesoin.prix" type="number" >
+      </mat-form-field>
+
+    </div>
+    <div mat-dialog-action style="text-align:center;" >
+    <button  mat-raised-button  id="btn" (click)="updateBesoin()" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+      Modifier</button>
+    </div>
+</mat-card>
+
+</mat-sidenav-content>
+  <video  autoplay loop id="myVideo">
+    <source src="assets/images/coton7.mp4" type="video/mp4">
+  </video>
+</mat-sidenav-container>

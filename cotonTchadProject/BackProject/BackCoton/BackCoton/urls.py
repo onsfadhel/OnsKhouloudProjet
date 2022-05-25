@@ -22,7 +22,7 @@ from BackEnd import url
 from BackEnd import views
 from django.conf import settings
 import BackEnd.views
-from BackEnd.views import RequestPasswordResetEmail, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,UserView ,RegisterView 
+from BackEnd.views import CodePhone,RequestPasswordResetEmail,envoiesms, PasswordTokenCheckAPI, SetNewPasswordAPIView , LoginView ,LogoutView ,UserView ,RegisterView 
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -36,13 +36,24 @@ router.register(r'utilisateurs', views.UtilisateursViewSet)
 router.register(r'chauffeurs',views.ChauffeursViewSet)
 router.register(r'usines',views.UsinesViewSet)
 router.register(r'produits',views.produitsViewSet)
-router.register(r'bordereauxlivraison',views.BorderauxdelivraisonViewSet)
+router.register(r'bordereauxtransport',views.BorderauxdelivraisonViewSet)
 router.register(r'transactions',views.transactionsViewSet)
 router.register(r'clients',views.clientsViewSet)
 router.register(r'factureProduction',views.factureProductionViewSet)
-
-
-
+router.register(r'stockproduits',views.stockViewSet)
+router.register(r'administarteurs',views.AdministrateurViewSet)
+router.register(r'responsableslogistiques',views.ResponsableLogistiqueViewSet)
+router.register(r'responsablesfinanciers',views.ResponsableFinancierViewSet)
+router.register(r'responsablesdeproduction',views.ResponsableDeProductionViewSet)
+router.register(r'responsablescgi',views.ResponsableCGIViewSet)
+router.register(r'responsablesdepontbascule',views.ResponsableDePontBaculeViewSet)
+router.register(r'cozocs',views.CozocViewSet)
+router.register(r'ticketsdepeses',views.ticketdepeseViewSet)
+router.register(r'besoins',views.besoinViewSet)
+router.register(r'facturescoton',views.facturecotonViewSet)
+router.register(r'bordereauxdelivraisondesintrants',views.bordereauxliViewSet)
+router.register(r'facturelivraisonintrant',views.facturelivraisonintrantViewSet)
+router.register(r'stockcotoncollecte',views.stockcotonViewSet)
 urlpatterns = [
      path('admin/', admin.site.urls),
      path('', include(router.urls)),
@@ -56,5 +67,7 @@ urlpatterns = [
      path('logout', LogoutView.as_view()),
      path('',include('BackEnd.url')),
      path('userJwt',UserView.as_view()),
+     path('envoiesms',envoiesms.as_view()),
+     path('code',CodePhone.as_view()),
      path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

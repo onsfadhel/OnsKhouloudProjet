@@ -1,4 +1,4 @@
-<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<app-headeradmin (toggleSideBarForMe)="sideBarToggler()"></app-headeradmin>
 <mat-sidenav-container>
     <mat-sidenav mode="side" [opened]="sideBarOpen">
         <app-sidenavbaradmin> </app-sidenavbaradmin>
@@ -7,53 +7,54 @@
             <div>
               <div class="vehiculetable" style="margin-top:30px;" >
                 <div>
-                  <h1>Gestion des utilisateurs</h1><br>
                   <form class="form-inline my-2 my-lg-0" style="margin-left:1000px;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width:300px;">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" name="nom"  type="search" placeholder="Entrer le nom d'utilisateur" 
+                    aria-label="Search" style="width:250px;" [(ngModel)]="nom">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()">Search</button>
                   </form>
-                  <button type="button" (click)="openDialog()" class="btn" id="button"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                  </svg>&nbsp;Ajouter utilisateur</button>
+                  <button  type="button" class="button" id="buttonbesoin" style="vertical-align:middle" (click)=" openDialog()">
+                    <mat-icon class="add">queue</mat-icon><span>&nbsp;&nbsp;&nbsp;&nbsp;Ajouter utilisateur</span></button>
                   
                 </div>
-                  <table class="tableuser " style="margin-left:100px;margin-top:40px;background-color:white;width:1200px;">
-                      <thead style="background-color:#06a86d;color:white;font-size:16px">
-                          <tr>
-                            <th scope="col" class="styleheader">Id</th>
-                            <th scope="col" class="styleheader">Nom</th>
-                            <th scope="col"class="styleheader">Prénom</th>
-                            <th scope="col" class="styleheader">Email</th>
-                            <th scope="col" class="styleheader">N du téléphone</th>
-                            <th scope="col" class="styleheader">Adresse</th>
-                            <th scope="col" class="styleheader">role</th>
-                            <th scope="col" class="styleheader">&nbsp;&nbsp;&nbsp;Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let Utilisateur of utilisateurs">
-                            <td scope="row">{{Utilisateur.id}}</td>
-                            <td>{{Utilisateur.nom}} </td>
-                            <td>{{Utilisateur.prenom}}</td>
-                            <td>{{Utilisateur.email}}</td>
-                            <td>{{Utilisateur.phone}}</td>
-                            <td>{{Utilisateur.adresse}}</td>
-                            <td>{{Utilisateur.role}}</td>
-                            <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                              <button type="button" (click)="supprimerUser(Utilisateur.id)" class="btn btn-success" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                              </svg></button>&nbsp;&nbsp;
-                              <button type="button" class="btn btn-warning" (click)="modifUtilisateur(Utilisateur)"  >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                              </svg></button>
-                            </div></td>
-                          </tr>
-                        </tbody>
-                  </table>
-                  
+                <div style="overflow-x: auto;">
+                  <table class="table" style="width:1200px;" >
+                        <thead style="background-color:#06a86d;color:white;font-size:16px">
+                            <tr>
+                              <th scope="col" class="styleheader">Id</th>
+                              <th scope="col" class="styleheader">Nom</th>
+                              <th scope="col"class="styleheader">Prénom</th>
+                              <th scope="col" class="styleheader">Email</th>
+                              <th scope="col" class="styleheader">N du téléphone</th>
+                              <th scope="col" class="styleheader">Adresse</th>
+                              <th scope="col" class="styleheader">role</th>
+                              <th scope="col" class="styleheader">&nbsp;&nbsp;&nbsp;Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let Utilisateur of utilisateurs | paginate:{itemsPerPage:3,currentPage:p}">
+                              <td scope="row">{{Utilisateur.id}}</td>
+                              <td>{{Utilisateur.nom}} </td>
+                              <td>{{Utilisateur.prenom}}</td>
+                              <td>{{Utilisateur.email}}</td>
+                              <td>{{Utilisateur.phone}}</td>
+                              <td>{{Utilisateur.adresse}}</td>
+                              <td>{{Utilisateur.role}}</td>
+                              <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" (click)="supprimerUser(Utilisateur.id)" class="btn btn-success" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg></button>&nbsp;&nbsp;
+                                <button type="button" class="btn btn-warning" (click)="modifUtilisateur(Utilisateur)"  >
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                </svg></button>
+                              </div></td>
+                            </tr>
+                          </tbody>
+                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </table>
+                  </div>
+                    
               </div>
           </div>
       </mat-sidenav-content>

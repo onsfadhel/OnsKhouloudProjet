@@ -1,0 +1,51 @@
+<h1 mat-dialog-title style="text-align:center;">Formulaire pour Ticket</h1><br>
+<div mat-card-content>
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label style="font-size:16px;">Numéro Ticket</mat-label>
+    <input matInput type="text"  name="matricule" [(ngModel)]="ticket.numeroticket" >
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label style="font-size:14px;">Caisse</mat-label>
+    <input matInput name="caisse" [(ngModel)]="ticket.caisse" type="text" >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label style="font-size:14px;">Véhicule Id</mat-label>
+    <input matInput name="vehiculeId" [(ngModel)]="ticket.vehicule_id" type="number" >
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label style="font-size:14px;">Date</mat-label>
+    <input matInput name="date" [(ngModel)]="ticket.date" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:14px;">Date P1</mat-label>
+    <input matInput name="datep1" [(ngModel)]="ticket.dateP1" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:14px;">Date P2</mat-label>
+    <input matInput name="datep2" [(ngModel)]="ticket.dateP2" type="date" >
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label style="font-size:14px;" >Peseur</mat-label>
+    <input matInput name="datep2" [(ngModel)]="ticket.peseur" type="text" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:14px;">poid P1</mat-label>
+    <input matInput name="poidP1" [(ngModel)]="ticket.poidP1" type="number" >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:14px;">poid P2</mat-label>
+    <input matInput name="poidP2" [(ngModel)]="ticket.poidP2" type="number">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label style="font-size:14px;">Observation</mat-label>
+    <input matInput name="observation" [(ngModel)]="ticket.observation" type="text" >
+  </mat-form-field>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button  id="btn2" mat-dialog-close>Fermer</button>
+<button style="margin-left:8px;" mat-raised-button (click)="ajouterticket()" id="btn" >Ajouter Ticket</button>
+</div>

@@ -1,0 +1,71 @@
+<app-headercgi (toggleSideBarForMe)="sideBarToggler()"></app-headercgi>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="sideBarOpen">
+        <app-sidenavcgi> </app-sidenavcgi>
+    </mat-sidenav>
+    
+  <mat-sidenav-content> 
+  
+  <br><br>
+  <br><br>
+  <h1 mat-dialog-title style="margin-left:30px;color:#187486;text-align:center;">Modifier Bordereau</h1><br>
+    <div mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label style="font-size:20px;">N° Factuture</mat-label>
+            <input matInput type="text"  name="num" [(ngModel)]="factli.numfact">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Date </mat-label>
+            <input matInput name="fate" [(ngModel)]="factli.date" type="date" >
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:20px;">Intrant</mat-label>
+            <input matInput type="text"  name="designation" [(ngModel)]="factli.intrant">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Quantite </mat-label>
+            <input matInput name="qte" [(ngModel)]="factli.qte" type="number" class="form-control">
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Prix Unitaire </mat-label>
+            <input matInput name="qte" [(ngModel)]="factli.prixunitaire" type="number" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Prix Total </mat-label>
+            <input matInput name="qte" [(ngModel)]="factli.prixtotal" type="number" class="form-control">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Modalité Livraison</mat-label>
+            <input matInput name="type" [(ngModel)]="factli.modal_liv"  id="inlineFormCustomSelect" >
+              
+          </mat-form-field>
+        
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Date Echeance </mat-label>
+            <input matInput name="date_paie" [(ngModel)]="factli.echeance" type="date" >
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label style="font-size:16px;">Observation </mat-label>
+            <input matInput name="date_liv" [(ngModel)]="factli.observation" type="text" >
+          </mat-form-field>
+
+
+    </div>
+    <div mat-dialog-action style="text-align:center;" >
+    <button  mat-raised-button  id="btn" (click)="updateBordli()" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+      Modifier le Bordereau</button>
+    </div>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

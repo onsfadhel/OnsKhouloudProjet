@@ -1,0 +1,51 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+<mat-sidenav-container>
+    
+  <mat-sidenav-content style="margin-left:100px;"> 
+    <h1 mat-dialog-title ><b>Consulter mon profile</b></h1>
+    <div class="dropdown-divider" style="width:1400px"></div>
+    <br><br>
+    <img [src]="IconUserPath" id="IconUser" width="180" height="180">
+    <div mat-card-content class="form">
+        <h2><b>Informations personnelles</b></h2>
+        <div class="dropdown-divider" style="width:900px"></div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Nom: </b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{selectedUser.nom}}
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b> Prénom: </b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{selectedUser.prenom}}
+            
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Role</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{selectedUser.role}}
+        </div>  <br> <br> <br>
+        <h2><b>Contact</b></h2>
+        <div class="dropdown-divider" style="width:900px"></div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Email:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{selectedUser.email}}
+        </div>  <br>
+    
+
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputphone" class="col-form-label"><h3><b>N du téléphone:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{selectedUser.phone}}
+        </div>  <br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label"><h3><b>Adresse:</b></h3></label>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp; {{selectedUser.adresse}}
+                </div>  <br>
+        
+    
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,88 @@
+.form{
+    margin-top : 200px;
+    opacity: 0.95;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: rgb(2, 83, 38) !important;
+    font-size: 20px !important;
+    font-weight: bold !important;  
+   }
+  
+.btn{
+    background-image: linear-gradient(to right, rgb(2, 83, 38), #38d39f, #38d39f);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    height: 50px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    margin: 1rem 0;
+    margin-left:50px;
+    cursor: pointer;
+    width: 550px;
+    transition: .5s;
+    box-sizing: border-box;
+}
+.btnalign{
+    text-align: center;
+}
+
+#body{
+    /* background-image: url(./../../assets/img/anim.gif);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+#myVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;  /*places the video background under accompanying content.*/ 
+  }
+  .welcome , .saisie{
+
+    align-items: center;
+    display:block;
+    background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+.main-div mat-card {
+    margin-left: 800px; 
+    }
+    
+.main-div{
+    width: 200px;
+    opacity: 0.8;     
+}
+.toolbarClass{
+    background-color: rgb(2, 83, 38);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    opacity: 0.9;
+}
+.logo-icon{
+    height: 350px;
+    width: 400px;
+    margin-bottom: 20px;
+}
+.msgerreur{
+    margin-top: 2px;
+    text-align:center;
+    color: red;
+}
+.link{
+    color:blue;
+    cursor:pointer;
+}
+.link:hover{
+    color:rgb(2, 83, 38);
+    font-weight: bold;
+
+}

@@ -1,0 +1,24 @@
+mat-form-field{
+    width :100%;
+  }
+  #btn{
+    width:162px;
+    height: 42px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #182c86;
+  }
+  #btn2{
+    height: 42px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:cursive;
+    background-color: #dd2b0b;
+  }
+  h1{
+    color: #182c86;
+  }
+  
